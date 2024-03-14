@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String // basics
+  email        String        @unique
+  password     String
+  identity     String        @unique
+  gender       Gender
+  age          Int
+  religion     String
+  phone        String        @unique
+  phone2       String        @unique @map("another_phone")
+  bloodType    String        @map("blood_type")
+  jilla        String // locations 
+  subJilla     String        @map("sub_jilla ")
+  thana        String
+  address      String
+  status       ProfileStatus @default(PENDING) // profiles
+  role         ProfileType   @default(DONOR)
+  donorProfile DonorProfile?
+  posts        Forum[]
+  createdAt    DateTime      @default(now()) // timestamps
+  updatedAt    DateTime      @updatedAt
+
+  @@map("users")
+}
+
+model Receiver {
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  name           String // basics
+  email          String        @unique
+  password       String
+  identity       String        @unique
+  gender         Gender
+  age            Int
+  religion       String
+  phone          String        @unique
+  phone2         String        @unique @map("another_phone")
+  bloodType      String        @map("blood_type")
+  jilla          String // locations 
+  subJilla       String        @map("sub_jilla ")
+  thana          String
+  address        String
+  status         ProfileStatus @default(PENDING) // profiles
+  role           ProfileType   @default(RECEIVER)
+  userStatus     UserStatus    @default(NORMAL)
+  receiveHistory Donation[]
+  appointment    Appointment?
+  createdAt      DateTime      @default(now()) // timestamps
+  updatedAt      DateTime      @updatedAt
+
+  @@map("receiver")
+}
+
+model DonorProfile {
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  bloodType       String        @map("blood_type")
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String        @unique @db.ObjectId
+  status          DonorStatus   @default(INACTIVE)
+  donationHistory Donation[]
+  appointments    Appointment[]
+
+  @@map("donor_profiles")
+}
+
+model Donation {
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  donor      DonorProfile @relation(fields: [donorId], references: [id])
+  donorId    String       @db.ObjectId
+  receiver   Receiver     @relation(fields: [receiverId], references: [id])
+  receiverId String       @db.ObjectId
+  address    String
+  image      String?
+  donatedAt  DateTime     @default(now())
+
+  @@map("donations")
+}
+
+model Appointment {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  donor          DonorProfile      @relation(fields: [donorId], references: [id]) // identity
+  donorId        String            @db.ObjectId
+  receiver       Receiver          @relation(fields: [receiverId], references: [id])
+  receiverId     String            @unique @db.ObjectId
+  scheduledAt    DateTime // status
+  status         AppointmentStatus @default(UNVERIFIED)
+  images         String[] // documents
+  hospitalInfo   String            @map("hospital_info")
+  address        String
+  additionalInfo String?           @map("additional_info")
+  cancelMessage  String?           @map("cancel_message")
+
+  @@map("appointments")
+}
+
+model Forum {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String   @unique
+  slug      String   @unique
+  body      String
+  image     String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @db.ObjectId
+  createdAt DateTime @default(now()) // timestamps
+  updatedAt DateTime @updatedAt
+
+  @@map("forum_posts")
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String
+  address   String
+  message   String
+  createdAt DateTime @default(now())
+
+  @@map("messages")
+}
+
+model Hospitals {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  phone     String
+  email     String
+  jilla     String
+  subJilla  String   @map("sub_jilla ")
+  thana     String
+  address   String
+  doctors   String[]
+  open      String
+  createdAt DateTime @default(now())
+
+  @@map("hospitals")
+}
+
+model Admin {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String
+
+  @@map("admins")
+}
+
+// model Comment {
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+
+//   @@map("comments")
+// }
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum ProfileType {
+  ADMIN
+  MODERATOR
+  DONOR
+  RECEIVER
+}
+
+enum ProfileStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum DonorStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum UserStatus {
+  NORMAL
+  REQUESTED
+}
+
+enum AppointmentStatus {
+  UNVERIFIED
+  REJECTED
+  PENDING
+  ACCEPTED
+  CANCELED
+  COMPLETED
+}
