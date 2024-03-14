@@ -21,9 +21,9 @@ export async function GET() {
                     name: true,
                     religion: true,
                     bloodType: true,
-                    jilla: true,
-                    subJilla: true,
-                    thana: true,
+                    district: true,
+                    subDistrict: true,
+                    state: true,
                     address: true,
                     phone: true,
                     phone2: true

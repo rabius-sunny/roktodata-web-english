@@ -18,9 +18,9 @@ export async function GET(request: Request) {
             name: true,
             email: true,
             religion: true,
-            jilla: true,
-            subJilla: true,
-            thana: true,
+            district: true,
+            subDistrict: true,
+            state: true,
             createdAt: true
           }
         }

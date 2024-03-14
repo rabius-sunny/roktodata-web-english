@@ -1,43 +1,43 @@
 import * as z from 'zod'
 
 export const basicdata = z.object({
-  name: z.string().min(4, 'আসল নাম আবশ্যক।'),
-  identity: z.string().min(10, 'সঠিক পরিচয়পত্র নম্বর দিন।'),
-  gender: z.string().min(2, 'লিঙ্গ নির্বাচন আবশ্যক।'),
-  religion: z.string().min(2, 'ধর্ম নির্বাচন আবশ্যক।'),
-  age: z.string().min(2, 'বয়স নির্বাচন আবশ্যক।')
+  name: z.string().min(4, 'field is required'),
+  identity: z.string().min(10, 'field is required'),
+  gender: z.string().min(2, 'field is required'),
+  religion: z.string().min(2, 'field is required'),
+  age: z.string().min(2, 'field is required')
 })
 export const locationdata = z.object({
-  jilla: z.string().min(2, 'জেলার নাম আবশ্যক।'),
-  subJilla: z.string().min(2, 'উপজেলার নাম আবশ্যক।'),
-  thana: z.string().min(2, 'থানার নাম আবশ্যক।'),
-  address: z.string().min(10, 'বিস্তারিত ঠিকানা আবশ্যক।')
+  district: z.string().min(2, 'field is required'),
+  subDistrict: z.string().min(2, 'field is required'),
+  state: z.string().min(2, 'field is required'),
+  address: z.string().min(10, 'field is required')
 })
 export const creddata = z.object({
-  email: z.string().email('সঠিক ইমেইল অ্যাড্রেস আবশ্যক।'),
-  phone: z.string().min(11, 'সঠিক ফোন নাম্বার দিন।'),
-  phone2: z.string().min(11, 'সঠিক ফোন নাম্বার দিন।'),
-  password: z.string().min(6, 'পাসওয়ার্ড অন্তত ৬ সংখ্যার হতে হবে।')
+  email: z.string().email('enter correct email address'),
+  phone: z.string().min(11, 'field is required'),
+  phone2: z.string().min(11, 'field is required'),
+  password: z.string().min(6, 'password has to be minimum 6 in length')
 })
 export const logindata = z.object({
-  email: z.string().email('সঠিক ইমেইল অ্যাড্রেস আবশ্যক।'),
-  password: z.string().min(6, 'পাসওয়ার্ড অন্তত ৬ সংখ্যার হতে হবে।'),
+  email: z.string().email('enter correct email address'),
+  password: z.string().min(6, 'password has to be minimum 6 in length'),
   username: z.string().optional()
 })
 export const alldata = z.object({
-  name: z.string().min(4, 'আসল নাম আবশ্যক।'),
-  identity: z.string().min(10, 'সঠিক পরিচয়পত্র নম্বর দিন।'),
-  gender: z.string().min(2, 'লিঙ্গ নির্বাচন আবশ্যক।'),
-  religion: z.string().min(2, 'ধর্ম নির্বাচন আবশ্যক।'),
-  age: z.string().min(2, 'বয়স নির্বাচন আবশ্যক।'),
-  jilla: z.string().min(2, 'জেলার নাম আবশ্যক।'),
-  subJilla: z.string().min(2, 'উপজেলার নাম আবশ্যক।'),
-  thana: z.string().min(2, 'থানার নাম আবশ্যক।'),
-  address: z.string().min(10, 'বিস্তারিত ঠিকানা আবশ্যক।'),
-  email: z.string().email('সঠিক ইমেইল অ্যাড্রেস আবশ্যক।'),
-  phone: z.string().min(11, 'সঠিক ফোন নাম্বার দিন।'),
-  phone2: z.string().min(11, 'সঠিক ফোন নাম্বার দিন।'),
-  password: z.string().min(6, 'পাসওয়ার্ড অন্তত ৬ সংখ্যার হতে হবে।')
+  name: z.string().min(4, 'field is required'),
+  identity: z.string().min(10, 'field is required'),
+  gender: z.string().min(2, 'field is required'),
+  religion: z.string().min(2, 'field is required'),
+  age: z.string().min(2, 'field is required'),
+  district: z.string().min(2, 'field is required'),
+  subDistrict: z.string().min(2, 'field is required'),
+  state: z.string().min(2, 'field is required'),
+  address: z.string().min(10, 'field is required'),
+  email: z.string().email('enter correct email address'),
+  phone: z.string().min(11, 'field is required'),
+  phone2: z.string().min(11, 'field is required'),
+  password: z.string().min(6, 'password has to be minimum 6 in length')
 })
 
 export type TBasicdata = z.infer<typeof basicdata>

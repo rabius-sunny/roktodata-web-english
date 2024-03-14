@@ -29,24 +29,26 @@ export default function CancelDialog({ open, setOpen, appId }: TPorps) {
 
   const handleAction = async () => {
     if (!checked && !msg) {
-      alert('যেকোনো একটি ফিল্ড পূরণ করুন।')
+      alert('Fill at least one field.')
       return
     }
     const res = await cancelAppointment(
       appId,
-      checked ? 'আমি ইতোমধ্যে অন্য ডোনেশন রিকুয়েস্ট কনফার্ম করেছি।' : msg
+      checked ? "I've already another request confirmed" : msg
     )
     if (res.ok) {
-      successAlert({ body: 'রিকুয়েস্টটি ক্যান্সেল করা হয়েছে।' })
+      successAlert({ body: 'Request has been canceled.' })
       return back()
     }
-    if (res.error) return errorAlert({ body: 'ইরর হয়েছে, আবার চেষ্টা করুন।' })
+    if (res.error) return errorAlert({ body: 'Error occurred, try again.' })
   }
 
   return (
     <AlertDialog open={open}>
       <AlertDialogContent>
-        <AlertDialogHeader builtin>ক্যান্সেল করার কারণ লিখুন</AlertDialogHeader>
+        <AlertDialogHeader builtin>
+          Write the reason for cancellation.
+        </AlertDialogHeader>
         <div className='grid gap-4'>
           <div className='flex items-center gap-2 ml-1'>
             <input
@@ -60,11 +62,11 @@ export default function CancelDialog({ open, setOpen, appId }: TPorps) {
               className='size-5'
             />
             <Label htmlFor='check'>
-              আমি ইতোমধ্যে অন্য ডোনেশন রিকুয়েস্ট কনফার্ম করেছি।
+              I have already another request confirmed.
             </Label>
           </div>
-          <p>অথবা</p>
-          <Label htmlFor='cancelMessage'>কারণ</Label>
+          <p>OR</p>
+          <Label htmlFor='cancelMessage'>Reason</Label>
           <textarea
             onClick={() => setChecked(false)}
             value={msg}

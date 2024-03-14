@@ -23,11 +23,11 @@ export default function DonorDashboard() {
     setLoading(true)
     try {
       const res = await updateActiveStatus(status ? 'ACTIVE' : 'INACTIVE')
-      res.error && errorAlert({ body: 'একটি ইরর হয়েছে, আবার চেষ্টা করুন।' })
+      res.error && errorAlert({ body: 'Error occurred, try again.' })
       mutate()
       setLoading(false)
     } catch {
-      errorAlert({ body: 'একটি ইরর হয়েছে, আবার চেষ্টা করুন।' })
+      errorAlert({ body: 'Error occurred, try again.' })
       setLoading(false)
     }
   }
@@ -52,8 +52,8 @@ export default function DonorDashboard() {
         <div className='col-auto'>
           {data ? (
             <div className='card-shadow bg-white px-2 py-4 lg:px-4 lg:py-8 h-full'>
-              <h1 className='text-dark'>প্লাটফর্ম সেটিং</h1>
-              <p className='font-medium uppercase my-2'>একটিভ স্ট্যাটাস</p>
+              <h1 className='text-dark'>Platform Settings</h1>
+              <p className='font-medium uppercase my-2'>Active Status</p>
               <div className='flex items-center gap-2 mb-4'>
                 <Switch
                   className='data-[state=checked]:bg-success'
@@ -63,8 +63,8 @@ export default function DonorDashboard() {
                 />
                 <label className=' text-litetext'>
                   {data.user.donorProfile.status === 'ACTIVE'
-                    ? 'আমি অ্যাকটিভ'
-                    : 'আমি ডিঅ্যাকটিভ'}
+                    ? "I'm Active"
+                    : "I'm Deactive"}
                 </label>
               </div>
             </div>

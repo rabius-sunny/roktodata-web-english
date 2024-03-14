@@ -21,9 +21,9 @@ type TUser = {
   gender: TGender
   age: number
   religion: string
-  jilla: string
-  subJilla: string
-  thana: string
+  district: string
+  subDistrict: string
+  state: string
   phone: string
   phone2: string
   status: string

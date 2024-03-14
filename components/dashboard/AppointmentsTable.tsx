@@ -40,7 +40,7 @@ export default function AppointmentsTable({
         {!data?.length && (
           <TableCaption>
             <h1 className='text-primary text-xl h-40 flex items-center justify-center'>
-              কোনো ডাটা পাওয়া যায়নি।
+              No data found.
             </h1>
           </TableCaption>
         )}

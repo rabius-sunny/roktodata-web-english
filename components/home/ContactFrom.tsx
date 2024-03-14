@@ -25,7 +25,7 @@ export default function ContactFrom() {
       <div className='bg-white rounded-xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-3'>
         <div className='col-span-1 px-4 lg:px-6 pt-10 contact__bg'>
           <h2 className='text-white text-center md:text-start font-medium text-3xl sm:text-4xl mb-10'>
-            যোগাযোগ তথ্য
+            Contact Info.
           </h2>
           {contactInfo.map((item, idx) => (
             <div key={idx} className='flex items-center gap-4 mb-7'>
@@ -39,7 +39,7 @@ export default function ContactFrom() {
         </div>
         <div className='col-span-2 px-4 lg:px-6 pt-10'>
           <h2 className='text-center md:text-start font-medium text-3xl sm:text-4xl mb-10'>
-            যোগাযোগ করুন
+            Contact Us
           </h2>
           <form
             className='flex flex-col gap-4'
@@ -49,7 +49,7 @@ export default function ContactFrom() {
               <div className='col-auto'>
                 <GInput
                   register={register}
-                  label='আপনার নাম'
+                  label='Your name'
                   name='name'
                   message={errors.name?.message}
                   transparent
@@ -58,7 +58,7 @@ export default function ContactFrom() {
               <div className='col-auto'>
                 <GInput
                   register={register}
-                  label='আপনার ইমেইল'
+                  label='Your email address'
                   name='email'
                   message={errors.email?.message}
                   transparent
@@ -68,7 +68,7 @@ export default function ContactFrom() {
             <div>
               <GInput
                 register={register}
-                label='বিষয়'
+                label='Subject'
                 message={errors.subject?.message}
                 name='subject'
                 transparent
@@ -78,7 +78,7 @@ export default function ContactFrom() {
             <div>
               <GTextarea
                 register={register}
-                label='আপনার মেসেজ'
+                label='Your message'
                 message={errors.message?.message}
                 name='message'
                 transparent
@@ -87,7 +87,7 @@ export default function ContactFrom() {
 
             <div className='text-right my-8'>
               <Button className='w-full sm:w-auto' type='submit'>
-                মেসেজ পাঠান
+                Send message
               </Button>
             </div>
           </form>

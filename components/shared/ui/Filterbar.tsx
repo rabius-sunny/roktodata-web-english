@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { searchdata, TSearchdata } from '@/constants/schema/others'
-import { bloodGroups, jilla, religions } from '@/constants/static'
+import { bloodGroups, district, religions } from '@/constants/static'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -11,7 +11,7 @@ import { GSelect } from '@/components/customs/GInput'
 
 export default function Filterbar({ data }: { data: TSearchdata }) {
   const { push } = useRouter()
-  const { bloodType, jilla: jillaParams, ageFrom, ageTo, religion } = data
+  const { bloodType, district: jillaParams, ageFrom, ageTo, religion } = data
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
 
   const onSubmit = (params: TSearchdata) =>
     push(
-      `/search?bloodType=${params.bloodType}&jilla=${params.jilla}&religion=${params.religion}&ageFrom=${params.ageFrom}&ageTo=${params.ageTo}`
+      `/search?bloodType=${params.bloodType}&district=${params.district}&religion=${params.religion}&ageFrom=${params.ageFrom}&ageTo=${params.ageTo}`
     )
   return (
     <div className='bg-secondary p-2 md:p-4 rounded-xl'>
@@ -38,7 +38,7 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
                 value: item
               }))}
               register={register}
-              label='রক্তের গ্রুপ'
+              label='Blood Type'
               name='bloodType'
               message={errors.bloodType?.message}
             />
@@ -48,14 +48,14 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
               theme='dark'
               size='sm'
               defaultValue={jillaParams}
-              data={jilla.map((item) => ({
+              data={district.map((item) => ({
                 name: item,
                 value: item
               }))}
               register={register}
-              label='জেলা'
-              name='jilla'
-              message={errors.jilla?.message}
+              label='District'
+              name='district'
+              message={errors.district?.message}
             />
           </div>
           <div className='col-auto'>
@@ -63,9 +63,9 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
               theme='dark'
               size='sm'
               defaultValue={religion}
-              data={[{ name: 'সকল', value: 'all' }, ...religions]}
+              data={[{ name: 'all', value: 'all' }, ...religions]}
               register={register}
-              label='ধর্ম'
+              label='Religion'
               name='religion'
               message={errors.religion?.message}
             />
@@ -79,14 +79,14 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
               size='sm'
               defaultValue={ageFrom}
               data={[
-                { name: 'সকল', value: 'all' },
+                { name: 'all', value: 'all' },
                 ...Array.from({ length: 33 }, (i, j) => j + 18).map((item) => ({
                   name: item,
                   value: item
                 }))
               ]}
               register={register}
-              label='বয়স(থেকে)'
+              label='Age (from)'
               name='ageFrom'
               message={errors.ageFrom?.message}
             />
@@ -97,14 +97,14 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
               size='sm'
               defaultValue={ageTo}
               data={[
-                { name: 'সকল', value: 'all' },
+                { name: 'all', value: 'all' },
                 ...Array.from({ length: 33 }, (i, j) => j + 18).map((item) => ({
                   name: item,
                   value: item
                 }))
               ]}
               register={register}
-              label='বয়স(পর্যন্ত)'
+              label='Age (to)'
               name='ageTo'
               message={errors.ageTo?.message}
             />

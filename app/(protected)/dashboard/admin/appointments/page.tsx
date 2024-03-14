@@ -7,25 +7,25 @@ export default async function AppointmentsForAdmin() {
   return (
     <div>
       <AppointmentsTable
-        title='আনভেরিফাইড আবেদন'
+        title='Unverified Appointments'
         isAdmin
         type='UNVERIFIED'
         data={data.filter((item: TAppointment) => item.status === 'UNVERIFIED')}
       />
       <AppointmentsTable
-        title='পেন্ডিং আবেদন'
+        title='Pending Appointments'
         isAdmin
         type='PENDING'
         data={data.filter((item: TAppointment) => item.status === 'PENDING')}
       />
       <AppointmentsTable
-        title='গৃহীত আবেদন'
+        title='Accepted Appointments'
         isAdmin
         type='ACCEPTED'
         data={data.filter((item: TAppointment) => item.status === 'ACCEPTED')}
       />
       <AppointmentsTable
-        title='অস্বীকৃত আবেদন'
+        title='Cancelled Appointments'
         isAdmin
         type='CANCELED'
         data={data.filter((item: TAppointment) => item.status === 'CANCELED')}

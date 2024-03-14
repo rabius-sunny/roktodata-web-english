@@ -64,7 +64,7 @@ export function CInput({
 
 export function CSelect({
   label,
-  placeholder = 'নির্বাচন করুন',
+  placeholder = 'select',
   icon,
   message,
   data,

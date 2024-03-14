@@ -31,9 +31,9 @@ export default function AppointmentsDetailsForDonor() {
         back()
         return { ok: true }
       }
-      if (res.error) return { error: 'আবার চেষ্টা করুন' }
+      if (res.error) return { error: 'Try again' }
     } catch {
-      return { error: 'আবার চেষ্টা করুন' }
+      return { error: 'Try again' }
     }
   }
 
@@ -41,7 +41,7 @@ export default function AppointmentsDetailsForDonor() {
   if (error)
     return (
       <div className='text-red-500 font-medium text-3xl text-center'>
-        ইরর হয়েছে, আবার চেষ্টা করুন।
+        Error occurred, try again.
       </div>
     )
   return (

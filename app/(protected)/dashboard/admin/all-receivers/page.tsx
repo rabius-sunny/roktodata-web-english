@@ -7,7 +7,7 @@ export default async function AllReceivers() {
 
   return (
     <div>
-      <UserTable data={data.data} userType='RECEIVER' title='সকল রক্তগ্রহীতা' />
+      <UserTable data={data.data} userType='RECEIVER' title='All Recievers' />
     </div>
   )
 }

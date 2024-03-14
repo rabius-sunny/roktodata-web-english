@@ -44,7 +44,7 @@ export default function PanelLayout({
                 href='/'
                 className='flex items-center gap-2 font-medium text-xs pr-4 h-full'
               >
-                <ArrowLeft /> হোম এ যান
+                <ArrowLeft /> go home
               </Link>
               <div className='flex items-center gap-2'>
                 <Sheet>

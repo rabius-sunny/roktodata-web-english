@@ -31,7 +31,7 @@ export default function Login() {
       await authenticate({ ...value, username: 'admin' })
       setLoading(false)
     } catch (error) {
-      errorAlert({ body: 'ভুল ইমেইল অথবা পাসওয়ার্ড' })
+      errorAlert({ body: 'Wrong email or password!' })
       setLoading(false)
     }
   }
@@ -41,12 +41,14 @@ export default function Login() {
   return (
     <div className='bg-secondary grid gap-y-4 px-3 py-8 sm:p-12 rounded-xl'>
       <div className='text-center mb-6'>
-        <h1 className='text-3xl font-bold text-white mb-4'>অ্যাডমিন লগইন</h1>
+        <h1 className='text-3xl font-bold text-white mb-4 uppercase'>
+          admin login
+        </h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <CInput
-            label='ইমেইল'
+            label='Email'
             placeholder='me@rabius-sunny.com'
             icon={{ icon: User2 }}
             register={register}
@@ -57,7 +59,7 @@ export default function Login() {
         </div>
         <div>
           <CInput
-            label='পাসওয়ার্ড'
+            label='Password'
             icon={{ icon: ShieldCheck }}
             register={register}
             name='password'
@@ -73,16 +75,16 @@ export default function Login() {
             type='submit'
             className='w-full mt-4'
           >
-            লগইন
+            Login
           </Button>
         </div>
         <p className='text-sm mt-4 text-light font-medium flex-center gap-2'>
-          আপনি কি একজন রক্তদাতা ?{' '}
+          Are you a donor?
           <Link
             className='text-white font-semibold flex-center'
             href='/auth/register?type=donor'
           >
-            রেজিস্ট্রেশন করুন
+            Register here
             <ArrowRight className='size-5' />
           </Link>
         </p>

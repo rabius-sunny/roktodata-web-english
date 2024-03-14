@@ -5,7 +5,7 @@ import { auth } from '@/configs/auth'
 import PanelLayout from '@/components/shared/PanelLayout'
 
 export const metadata: Metadata = {
-  title: 'ড্যাশবোর্ড'
+  title: 'Dashboard'
 }
 export default async function DonorLayout({ children }: IChildren) {
   const session = await auth()

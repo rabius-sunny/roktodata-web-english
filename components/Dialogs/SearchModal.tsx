@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { searchdata, TSearchdata } from '@/constants/schema/others'
-import { bloodGroups, jilla, religions } from '@/constants/static'
+import { bloodGroups, district, religions } from '@/constants/static'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -33,7 +33,7 @@ export default function SearchModal({ trigger }: TProps) {
 
   const onSubmit = (data: TSearchdata) => {
     push(
-      `/search?bloodType=${data.bloodType}&jilla=${data.jilla}&religion=${data.religion}&ageFrom=${data.ageFrom}&ageTo=${data.ageTo}`
+      `/search?bloodType=${data.bloodType}&district=${data.district}&religion=${data.religion}&ageFrom=${data.ageFrom}&ageTo=${data.ageTo}`
     )
     setTimeout(() => setIsOpen(false), 1000)
   }
@@ -45,12 +45,12 @@ export default function SearchModal({ trigger }: TProps) {
         onClick={() => setIsOpen(true)}
         className='button-shadow'
       >
-        {trigger || 'রক্ত নিন'}
+        {trigger || 'Get blood'}
       </Button>
       <AlertDialogContent className='rounded-lg'>
-        <AlertDialogHeader builtin>নিকটস্থ ডোনার খুঁজুন</AlertDialogHeader>
+        <AlertDialogHeader builtin>Find Nearest Donor</AlertDialogHeader>
         <AlertDialogDescription className='text-center sm:text-start'>
-          রক্তের গ্রুপ ও জেলা নির্বাচনের মাধ্যমে ডোনার খুঁজুন
+          Find donor by selecting District and Blood Group
         </AlertDialogDescription>
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,21 +62,21 @@ export default function SearchModal({ trigger }: TProps) {
                     value: item
                   }))}
                   register={register}
-                  label='রক্তের গ্রুপ'
+                  label='Blood Group'
                   name='bloodType'
                   message={errors.bloodType?.message}
                 />
               </div>
               <div className='col-auto'>
                 <GSelect
-                  data={jilla.map((item) => ({
+                  data={district.map((item) => ({
                     name: item,
                     value: item
                   }))}
                   register={register}
-                  label='জেলা'
-                  name='jilla'
-                  message={errors.jilla?.message}
+                  label='District'
+                  name='district'
+                  message={errors.district?.message}
                 />
               </div>
             </div>
@@ -85,9 +85,9 @@ export default function SearchModal({ trigger }: TProps) {
               <div className='col-span-3 md:col-auto'>
                 <GSelect
                   defaultValue='all'
-                  data={[{ name: 'সকল', value: 'all' }, ...religions]}
+                  data={[{ name: 'all', value: 'all' }, ...religions]}
                   register={register}
-                  label='ধর্ম'
+                  label='Religion'
                   name='religion'
                   message={errors.religion?.message}
                 />
@@ -96,7 +96,7 @@ export default function SearchModal({ trigger }: TProps) {
                 <GSelect
                   defaultValue='all'
                   data={[
-                    { name: 'সকল', value: 'all' },
+                    { name: 'all', value: 'all' },
                     ...Array.from({ length: 33 }, (i, j) => j + 18).map(
                       (item) => ({
                         name: item,
@@ -105,7 +105,7 @@ export default function SearchModal({ trigger }: TProps) {
                     )
                   ]}
                   register={register}
-                  label='বয়স(থেকে)'
+                  label='Age (from)'
                   name='ageFrom'
                   message={errors.ageFrom?.message}
                 />
@@ -114,7 +114,7 @@ export default function SearchModal({ trigger }: TProps) {
                 <GSelect
                   defaultValue='all'
                   data={[
-                    { name: 'সকল', value: 'all' },
+                    { name: 'all', value: 'all' },
                     ...Array.from({ length: 33 }, (i, j) => j + 18).map(
                       (item) => ({
                         name: item,
@@ -123,7 +123,7 @@ export default function SearchModal({ trigger }: TProps) {
                     )
                   ]}
                   register={register}
-                  label='বয়স(পর্যন্ত)'
+                  label='Age (to)'
                   name='ageTo'
                   message={errors.ageTo?.message}
                 />

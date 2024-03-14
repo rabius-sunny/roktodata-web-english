@@ -7,78 +7,78 @@ import {
   Sun
 } from 'lucide-react'
 
-export type TJilla = (typeof jilla)[0]
+export type TJilla = (typeof district)[0]
 export type TWhydonate = {
   icon: LucideIcon
   title: string
   description: string
 }
 
-export const jilla = [
-  'নরসিংদী',
-  'গাজীপুর',
-  'শরীয়তপুর',
-  'নারায়ণগঞ্জ',
-  'টাঙ্গাইল',
-  'কিশোরগঞ্জ',
-  'মানিকগঞ্জ',
-  'ঢাকা',
-  'মুন্সিগঞ্জ',
-  'রাজবাড়ী',
-  'মাদারীপুর',
-  'গোপালগঞ্জ',
-  'ফরিদপুর',
-  'সিরাজগঞ্জ',
-  'পাবনা',
-  'বগুড়া',
-  'রাজশাহী',
-  'নাটোর',
-  'জয়পুরহাট',
-  'চাঁপাইনবাবগঞ্জ',
-  'নওগাঁ',
-  'যশোর',
-  'সাতক্ষীরা',
-  'মেহেরপুর',
-  'নড়াইল',
-  'চুয়াডাঙ্গা',
-  'কুষ্টিয়া',
-  'মাগুরা',
-  'খুলনা',
-  'বাগেরহাট',
-  'ঝিনাইদহ',
-  'সিলেট',
-  'মৌলভীবাজার',
-  'হবিগঞ্জ',
-  'সুনামগঞ্জ',
-  'ঝালকাঠি',
-  'পটুয়াখালী',
-  'পিরোজপুর',
-  'বরিশাল',
-  'ভোলা',
-  'বরগুনা',
-  'কুমিল্লা',
-  'ফেনী',
-  'ব্রাহ্মণবাড়িয়া',
-  'রাঙ্গামাটি',
-  'নোয়াখালী',
-  'চাঁদপুর',
-  'লক্ষ্মীপুর',
-  'চট্টগ্রাম',
-  'কক্সবাজার',
-  'খাগড়াছড়ি',
-  'বান্দরবান',
-  'শেরপুর',
-  'ময়মনসিংহ',
-  'জামালপুর',
-  'নেত্রকোণা',
-  'পঞ্চগড়',
-  'দিনাজপুর',
-  'লালমনিরহাট',
-  'নীলফামারী',
-  'গাইবান্ধা',
-  'ঠাকুরগাঁও',
-  'রংপুর',
-  'কুড়িগ্রাম'
+export const district = [
+  'Dhaka',
+  'Faridpur',
+  'Gazipur',
+  'Gopalganj',
+  'Jamalpur',
+  'Kishoreganj',
+  'Madaripur',
+  'Manikganj',
+  'Munshiganj',
+  'Mymensingh',
+  'Narayanganj',
+  'Narsingdi',
+  'Netrokona',
+  'Rajbari',
+  'Shariatpur',
+  'Sherpur',
+  'Tangail',
+  'Bogra',
+  'Joypurhat',
+  'Naogaon',
+  'Natore',
+  'Nawabganj',
+  'Pabna',
+  'Rajshahi',
+  'Sirajgonj',
+  'Dinajpur',
+  'Gaibandha',
+  'Kurigram',
+  'Lalmonirhat',
+  'Nilphamari',
+  'Panchagarh',
+  'Rangpur',
+  'Thakurgaon',
+  'Barguna',
+  'Barisal',
+  'Bhola',
+  'Jhalokati',
+  'Patuakhali',
+  'Pirojpur',
+  'Bandarban',
+  'Brahmanbaria',
+  'Chandpur',
+  'Chittagong',
+  'Comilla',
+  "Cox's Bazar",
+  'Feni',
+  'Khagrachari',
+  'Lakshmipur',
+  'Noakhali',
+  'Rangamati',
+  'Habiganj',
+  'Maulvibazar',
+  'Sunamganj',
+  'Sylhet',
+  'Bagerhat',
+  'Chuadanga',
+  'Jessore',
+  'Jhenaidah',
+  'Khulna',
+  'Kushtia',
+  'Magura',
+  'Meherpur',
+  'Narail',
+  'Satkhira'
 ]
 
 export const donationimages: string[] = [
@@ -101,39 +101,39 @@ export const bloodGroups: string[] = [
 export const whyDonate: TWhydonate[] = [
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   },
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   },
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   },
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   },
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   },
   {
     icon: HeartPulse,
-    title: 'অন্যের জীবন বাঁচান',
+    title: "Save other's life",
     description:
-      'আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে। আপনার দিনের একটি সাধারণ রক্তদান অন্য কারো জীবন বাঁচাতে সহায় করতে পারে।'
+      ' culpa numquam distinctio quo sunt eligendi, ut assumenda veniam. Illum aut culpa similique quam! Dicta'
   }
 ]
 
@@ -145,20 +145,20 @@ export const contactInfo: TWhydonate[] = [
 ]
 
 export const genders = [
-  { name: 'পুরুষ', value: 'MALE' },
-  { name: 'নারী', value: 'FEMALE' },
-  { name: 'অন্যান্য', value: 'OTHERS' }
+  { name: 'Male', value: 'MALE' },
+  { name: 'Female', value: 'FEMALE' },
+  { name: 'Others', value: 'OTHERS' }
 ]
 
 export const userTypes = [
-  { name: 'রক্তদাতা', value: 'DONOR' },
-  { name: 'রক্ত গ্রহীতা', value: 'RECEIVER' }
+  { name: 'Donor', value: 'DONOR' },
+  { name: 'Receiver', value: 'RECEIVER' }
 ]
 
 export const religions = [
-  { name: 'ইসলাম', value: 'ISLAM' },
-  { name: 'খ্রিষ্টান', value: 'CHRISTIAN' },
-  { name: 'হিন্দু', value: 'HINDU' },
-  { name: 'বৌদ্ধ', value: 'BUDDHIST' },
-  { name: 'অন্যান্য', value: 'OTHERS' }
+  { name: 'Islam', value: 'ISLAM' },
+  { name: 'Christian', value: 'CHRISTIAN' },
+  { name: 'Hindu', value: 'HINDU' },
+  { name: 'Buddhist', value: 'BUDDHIST' },
+  { name: 'Others', value: 'OTHERS' }
 ]

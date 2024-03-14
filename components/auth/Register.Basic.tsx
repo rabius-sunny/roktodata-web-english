@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use client'
 
 import {
@@ -38,8 +39,8 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
       <div>
         <div>
           <CInput
-            label='আপনার নাম'
-            placeholder='মুহাম্মাদ রবিউস সানী'
+            label='Your Name'
+            placeholder='Muhammad Rabius Sunny'
             icon={{ icon: User2 }}
             register={register}
             name='name'
@@ -48,7 +49,7 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
         </div>
         <div>
           <CInput
-            label='আইডেন্টিটি'
+            label='Identity'
             placeholder='xxx xxx xxxx'
             icon={{ icon: CreditCard }}
             register={register}
@@ -58,7 +59,7 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
         </div>
         <div>
           <CSelect
-            label='লিঙ্গ'
+            label='Gender'
             message={errors.gender?.message}
             icon={{ icon: PersonStanding }}
             data={genders}
@@ -68,7 +69,7 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
         </div>
         <div>
           <CSelect
-            label='ধর্ম'
+            label='Religion'
             message={errors.religion?.message}
             icon={{ icon: User2 }}
             data={religions}
@@ -78,7 +79,7 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
         </div>
         <div>
           <CSelect
-            label='বয়স'
+            label='Age'
             message={errors.age?.message}
             icon={{ icon: User2 }}
             data={Array.from({ length: 24 }, (_, index) => index + 17).map(
@@ -91,7 +92,7 @@ export default function RegisterBasic({ onSubmit, data }: TProps) {
 
         <div>
           <Button type='submit' className='w-full mt-4'>
-            পরবর্তী
+            Next
             <ArrowRight className='ml-2 h-4' />
           </Button>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
@@ -7,7 +8,7 @@ import {
   TCreddata,
   TLocationdata
 } from '@/constants/schema/register'
-import { jilla } from '@/constants/static'
+import { district } from '@/constants/static'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
   ArrowLeft,
@@ -37,9 +38,9 @@ export default function RegisterLocation({
   } = useForm<TLocationdata>({
     resolver: zodResolver(locationdata),
     defaultValues: {
-      jilla: data?.jilla,
-      subJilla: data?.subJilla,
-      thana: data?.thana,
+      district: data?.district,
+      subDistrict: data?.subDistrict,
+      state: data?.state,
       address: data?.address
     }
   })
@@ -47,38 +48,37 @@ export default function RegisterLocation({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <CSelect
-          label='জেলা'
-          message={errors.jilla?.message}
+          label='District'
+          message={errors.district?.message}
           icon={{ icon: MapPin }}
-          data={jilla.map((item) => ({ name: item, value: item }))}
-          name='jilla'
+          data={district.map((item) => ({ name: item, value: item }))}
+          name='district'
           register={register}
-          placeholder='আপনার জেলা নির্বাচন করুন'
+          placeholder='select'
         />
         <div>
           <CInput
-            label='উপজেলা'
-            placeholder='রংপুর সদর'
+            label='Sub District'
             icon={{ icon: MapPin }}
             register={register}
-            name='subJilla'
-            message={errors.subJilla?.message}
+            name='subDistrict'
+            message={errors.subDistrict?.message}
           />
         </div>
         <div>
           <CInput
-            label='থানা'
-            placeholder='কোতোয়ালী থানা'
+            label='State'
+            placeholder='Kotwali state'
             icon={{ icon: Landmark }}
             register={register}
-            name='thana'
-            message={errors.thana?.message}
+            name='state'
+            message={errors.state?.message}
           />
         </div>
         <div>
           <CInput
-            label='বিস্তারিত ঠিকানা'
-            placeholder='হাবিবনগর, শাপলা চত্বর, কলেজরোড, রংপুর সদর।'
+            label='Details Address'
+            placeholder='Habib nagar, College road, Rangpur'
             icon={{ icon: MapPinned }}
             register={register}
             name='address'
@@ -94,10 +94,10 @@ export default function RegisterLocation({
             className='w-full mt-4 text-primary'
           >
             <ArrowLeft className='ml-2 h-4' />
-            পূর্ববর্তী
+            Previous
           </Button>
           <Button type='submit' className='w-full mt-4'>
-            পরবর্তী
+            Next
             <ArrowRight className='ml-2 h-4' />
           </Button>
         </div>

@@ -28,7 +28,7 @@ export const createUser = async (data: any) => {
     })
     if (isDuplicate.length)
       return error_res(
-        'ইমেইল, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
+        'Email, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
       )
 
     await prisma.user.create({
@@ -63,7 +63,7 @@ export const createReceiver = async (data: any) => {
     })
     if (isDuplicate.length)
       return error_res(
-        'ইমেইল, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
+        'Email, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
       )
 
     const receiver = await prisma.receiver.create({
@@ -113,7 +113,7 @@ export const checkStatus = async (formData: TLogindata) => {
         )
       }
     } else {
-      return error_res('ভুল ইমেইল অথবা পাসওয়ার্ড')
+      return error_res('Wrong email or password!')
     }
   } catch {
     return error_res()

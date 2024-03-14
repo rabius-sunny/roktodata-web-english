@@ -51,7 +51,7 @@ export default function CompleteDialog({ open, setOpen, appId }: TPorps) {
         if (res.ok && res.data && res.data[0]) {
           const donation = await createDonation(appId, res.data[0])
           if (donation.ok) {
-            successAlert({ title: 'সফল হয়েছে' })
+            successAlert({ title: 'Succeed' })
             return back()
           }
         }
@@ -59,30 +59,30 @@ export default function CompleteDialog({ open, setOpen, appId }: TPorps) {
 
       const donation = await createDonation(appId)
       if (donation.ok) {
-        successAlert({ title: 'সফল হয়েছে' })
+        successAlert({ title: 'Succeed' })
         return back()
       }
 
       setLoading(false)
-      return errorAlert({ body: 'ইরর হয়েছে, আবার চেষ্টা করুন।' })
+      return errorAlert({ body: 'Error occurred, try again.' })
     } catch {
       setLoading(false)
-      return errorAlert({ body: 'ইরর হয়েছে, আবার চেষ্টা করুন।' })
+      return errorAlert({ body: 'Error occurred, try again.' })
     }
   }
 
   return (
     <AlertDialog open={open}>
       <AlertDialogContent>
-        <AlertDialogHeader builtin>একটি ছবি যোগ করুন</AlertDialogHeader>
+        <AlertDialogHeader builtin>Attach a photo</AlertDialogHeader>
         <AlertDialogDescription>
-          এই ডোনেশনটি ডোনেশন হিস্ট্রিসহ অন্যান্য স্থানে পোস্ট করা হবে। চাইলে
-          একটি কভার ফোটো আপলোড করতে পারেন অথবা সরাসরি
+          This donation will be posted into Donation History along with other
+          places. You can attach a success photo or{' '}
           <span className='text-secondary font-semibold px-1'>Submit</span>{' '}
-          করুন।
+          directly.
         </AlertDialogDescription>
         <div>
-          <Label htmlFor='image'>ছবি বাছাই করুন </Label>
+          <Label htmlFor='image'>Select Image</Label>
           <Input
             disabled={loading}
             onChange={(e) => {

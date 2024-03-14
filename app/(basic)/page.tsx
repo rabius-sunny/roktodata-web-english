@@ -14,7 +14,7 @@ import Container from '@/components/shared/Container'
 import SectionHeader from '@/components/shared/ui/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'হোম'
+  title: 'Home'
 }
 
 export default async function Home() {
@@ -28,7 +28,7 @@ export default async function Home() {
 
       {/* Why donate blood section */}
       <Container>
-        <SectionHeader title='কেন রক্তদান করবেন' />
+        <SectionHeader title='Why Donate Blood' />
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-6'>
           {whyDonate.map((item, idx) => (
             <div key={idx} className='col-auto'>
@@ -48,11 +48,11 @@ export default async function Home() {
       {/* Who donate blood section */}
       <div className='bg-primary pb-16 my-16'>
         <Container size='md'>
-          <SectionHeader title='কে রক্ত দিতে পারবেন ?' color='white' />
+          <SectionHeader title='Who Can Donate ?' color='white' />
           <div className='grid place-items-center grid-cols-3 gap-2'>
             <div className='col-span-1'>
               <div className=' text-center'>
-                <h1 className='text-3xl font-bold text-white mb-2'>নারী</h1>
+                <h1 className='text-3xl font-bold text-white mb-2'>Women</h1>
                 <div className='flex justify-center'>
                   <Image
                     src='/images/others/female.png'
@@ -69,12 +69,12 @@ export default async function Home() {
                     height={50}
                   />
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    সর্বনিম্ন বয়স
+                    Min. Age
                   </p>
                 </div>
                 <div className='mt-2 flex items-center gap-2'>
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    সর্বনিম্ন ওজন
+                    Min. Weight
                   </p>
                   <Image
                     src='/images/others/femaleweight.png'
@@ -91,7 +91,7 @@ export default async function Home() {
                     height={50}
                   />
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    হিমো./ডেসিলিটার
+                    Himo./D.L.
                   </p>
                 </div>
               </div>
@@ -123,12 +123,12 @@ export default async function Home() {
                     height={50}
                   />
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    সর্বনিম্ন বয়স
+                    Min. Age
                   </p>
                 </div>
                 <div className='mt-2 flex items-center gap-2'>
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    সর্বনিম্ন ওজন
+                    Min. Weight
                   </p>
                   <Image
                     src='/images/others/maleweight.png'
@@ -145,7 +145,7 @@ export default async function Home() {
                     height={50}
                   />
                   <p className='font-medium text-white text-xs sm:text-lg'>
-                    হিমো./ডেসিলিটার
+                    Himo./D.L.
                   </p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default async function Home() {
 
       {/* Donation chart section */}
       <Container>
-        <SectionHeader title='রক্তদানের চার্ট' />
+        <SectionHeader title='Donation Chart' />
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-5 place-items-center'>
           {Array.from({ length: 8 }, (item: number) => item).map(
             (item: number, idx) => (
@@ -175,7 +175,7 @@ export default async function Home() {
 
       {/* Our Impact section */}
       <Container className='mt-10'>
-        <SectionHeader title='আমাদের ইমপ্যাক্ট' />
+        <SectionHeader title='Our Impact' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-8 md:mb-16'>
           <div className='col-auto'>
             <div className='rounded-3xl overflow-hidden'>
@@ -263,16 +263,16 @@ export default async function Home() {
           >
             <div>
               <h1 className='text-4xl font-semibold text-white mb-2'>
-                তো আর কীসের জন্য অপেক্ষা করছেন?
+                So what are you waiting for ?
               </h1>
               <p className='text-lg text-extralight'>
-                আজই দান করুন মহামূল্যবান ও শ্রেষ্ঠ উপহার, একজন মুমূর্ষু প্রাণকে,
-                যে আপনার অনুগ্রহের অপেক্ষায়।
+                Donate today, now, the best gift to someone, who is eagerly
+                waiting for you.
               </p>
             </div>
             <div className='sm:self-end lg:self-center'>
               <Button className='bg-white button-shadow w-full sm:w-auto text-primary'>
-                ডোনেট করুন
+                Donate
               </Button>
             </div>
           </Container>
@@ -284,16 +284,15 @@ export default async function Home() {
           >
             <div>
               <Button className='bg-primary button-shadow w-full sm:w-auto text-white'>
-                রক্ত নিন
+                Get Blood
               </Button>
             </div>
             <div className='order-first lg:order-last'>
               <h1 className='text-4xl font-semibold text-white mb-2'>
-                আপনি কি রক্ত খুঁজছেন?
+                Are you seeking blood ?
               </h1>
               <p className='text-lg text-extralight'>
-                আমাদের ডেডিকেটেড ভলান্টিয়ার দ্বারা রক্ত পেতে আজই রেজিস্ট্রেশন
-                করুন।
+                Get blood from our selected volunteers.
               </p>
             </div>
           </Container>
@@ -302,7 +301,7 @@ export default async function Home() {
 
       {/* Blog section */}
       <Container>
-        <SectionHeader title='ব্লগ থেকে পড়ুন' />
+        <SectionHeader title='Read From Blogs' />
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8'>
           {[1, 2, 3, 4].map((idx) => (
             <div className='col-auto group' key={idx}>
@@ -319,7 +318,7 @@ export default async function Home() {
                   <span className='h-1 w-1 rounded-full bg-litetext' />
                   <span>admin-roktodataweb</span>
                 </p>
-                <h2 className='text-dark'>ব্লগ টাইটেল - রক্তদাতা ব্লগ</h2>
+                <h2 className='text-dark'>Blog Title - Roktodata Blog</h2>
                 <p className='font-light mt-2'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Atque facere quisquam voluptate sunt.
@@ -329,7 +328,7 @@ export default async function Home() {
                     href='/'
                     className='flex items-center gap-1 font-medium text-xs'
                   >
-                    বিস্তারিত পড়ুন <ArrowRight className='size-4' />
+                    Read more <ArrowRight className='size-4' />
                   </Link>
                 </div>
               </div>

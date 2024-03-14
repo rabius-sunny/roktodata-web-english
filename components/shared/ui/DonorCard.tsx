@@ -9,16 +9,16 @@ export default function DonorCard({ donor }: { donor: TDonor }) {
   const { push } = useRouter()
 
   const address = [
-    { title: 'জেলা', value: donor.user.jilla },
-    { title: 'উপজেলা', value: donor.user.subJilla },
+    { title: 'District', value: donor.user.district },
+    { title: 'Sub-District', value: donor.user.subDistrict },
     {
-      title: 'ঠিকানা',
+      title: 'Address',
       value:
         donor.user.address.length > 25
           ? `${donor.user.address.slice(0, 25)}...`
           : donor.user.address
     },
-    { title: 'থানা', value: donor.user.thana }
+    { title: 'State', value: donor.user.state }
   ]
 
   return (
@@ -63,7 +63,7 @@ export default function DonorCard({ donor }: { donor: TDonor }) {
           className='bg-light text-primary'
         >
           <Clock4Icon />
-          <span>প্রোফাইল দেখুন</span>
+          <span>View profile</span>
         </Button>
       </div>
     </div>

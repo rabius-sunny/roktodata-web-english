@@ -20,13 +20,13 @@ export default function AboutUs() {
         <div className='absolute inset-0 flex items-center justify-center text-white text-center'>
           <Container>
             <h1 className='text-3xl sm:text-5xl md:text-6xl font-bold mb-4 leading-relaxed sm:leading-[5rem] md:leading-[6rem] xl:text-8xl xl:leading-[8rem]'>
-              জড়িয়ে নিন রক্তের বাঁধনে, <br /> আপনারই মতো, <br /> আরেকটি প্রাণকে
+              Donate Blood <br /> Save lives <br /> Like You
             </h1>
           </Container>
         </div>
       </div>
       <Container size='md' className='mt-20 mb-10'>
-        <h1>আমাদের মিশন</h1>
+        <h1>Our Mission</h1>
         <p className='mt-4 text-lg'>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto
           nihil tenetur voluptatem alias praesentium porro sint doloremque
@@ -44,7 +44,7 @@ export default function AboutUs() {
       </Container>
       <Container>
         <div className='mt-10'>
-          <h1>আমাদের গল্পগুলো</h1>
+          <h1>Our Stories</h1>
           <div className='mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8'>
             {Array.from({ length: 6 }, (i, j) => j + 1).map((n) => (
               <div key={n} className='col-auto'>
@@ -57,7 +57,7 @@ export default function AboutUs() {
                     className='w-full'
                   />
                 </div>
-                <h3 className='mt-2'>বনানীতে একটি অবর্ণণীয় ঘটনা</h3>
+                <h3 className='mt-2'>An Unbelievable Story in Gulshan</h3>
                 <p className='mt-2 text-sm'>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Accusamus hic magnam doloribus sapiente labore vel?
@@ -67,7 +67,7 @@ export default function AboutUs() {
                     href='/'
                     className='flex items-center gap-1 font-medium text-xs text-secondary'
                   >
-                    বিস্তারিত পড়ুন <ArrowRight className='size-4' />
+                    Read more <ArrowRight className='size-4' />
                   </Link>
                 </div>
               </div>

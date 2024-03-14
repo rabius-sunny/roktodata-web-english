@@ -9,7 +9,7 @@ export default async function DonorRequests() {
     <div>
       <RequestTable
         data={data.data}
-        title='সকল ডোনার রিকুয়েস্ট'
+        title='All Donor Request'
         userType='DONOR'
       />
     </div>

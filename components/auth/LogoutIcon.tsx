@@ -9,8 +9,7 @@ export default function LogoutIcon() {
     <button
       onClick={() => {
         confirmAlert({
-          title: 'লগআউট করবেন?',
-          body: 'আপনি কি লগআউট করবেন?',
+          body: 'Sure to logout ?',
           precom: logOut
         })
       }}

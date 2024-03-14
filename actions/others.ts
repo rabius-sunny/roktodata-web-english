@@ -11,7 +11,8 @@ import prisma from '@/lib/prisma'
 const utapi = new UTApi()
 
 export const getSearchedDonor = async (data: TSearchdata) => {
-  const { bloodType, jilla, religion, ageFrom, ageTo } = removeProperties(data)
+  const { bloodType, district, religion, ageFrom, ageTo } =
+    removeProperties(data)
 
   try {
     const data = await prisma.donorProfile.findMany({
@@ -19,7 +20,7 @@ export const getSearchedDonor = async (data: TSearchdata) => {
         status: 'ACTIVE',
         bloodType,
         user: {
-          jilla,
+          district,
           religion,
           age: {
             gte: Number(ageFrom ?? 18),
@@ -30,10 +31,10 @@ export const getSearchedDonor = async (data: TSearchdata) => {
       include: {
         user: {
           select: {
-            jilla: true,
-            subJilla: true,
+            district: true,
+            subDistrict: true,
             address: true,
-            thana: true,
+            state: true,
             bloodType: true,
             name: true,
             email: true
@@ -150,9 +151,9 @@ export const getAppointmentForUser = async (id: string) => {
             user: {
               select: {
                 name: true,
-                jilla: true,
-                subJilla: true,
-                thana: true,
+                district: true,
+                subDistrict: true,
+                state: true,
                 address: true,
                 phone: true,
                 phone2: true
@@ -164,9 +165,9 @@ export const getAppointmentForUser = async (id: string) => {
           select: {
             id: true,
             name: true,
-            jilla: true,
-            subJilla: true,
-            thana: true,
+            district: true,
+            subDistrict: true,
+            state: true,
             address: true
           }
         }
@@ -200,9 +201,9 @@ export const getDonations = async () => {
             name: true,
             religion: true,
             bloodType: true,
-            jilla: true,
-            subJilla: true,
-            thana: true,
+            district: true,
+            subDistrict: true,
+            state: true,
             address: true,
             phone: true,
             phone2: true
@@ -215,9 +216,9 @@ export const getDonations = async () => {
                 name: true,
                 religion: true,
                 bloodType: true,
-                jilla: true,
-                subJilla: true,
-                thana: true,
+                district: true,
+                subDistrict: true,
+                state: true,
                 address: true,
                 phone: true,
                 phone2: true

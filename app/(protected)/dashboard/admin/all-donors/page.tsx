@@ -6,7 +6,7 @@ export default async function AllDonors() {
   const data = await getDonorData('ACCEPTED')
   return (
     <div>
-      <UserTable data={data.data} userType='DONOR' title='সকল ডোনার' />
+      <UserTable data={data.data} userType='DONOR' title='All Donor' />
     </div>
   )
 }

@@ -22,92 +22,94 @@ export type TNavItem = {
   }[]
 }
 export const siteInfo = {
-  name: 'রক্তদাতা',
-  description: 'ব্লাড ডোনেশন এপ্লিকেশন',
+  name: 'Roktodata',
+  description: 'Blood Donation Web Application',
   authors: {
-    url: 'https://fb.com/rabibinsalam',
+    url: 'https://rabius-sunny.vercel.app',
     name: 'Rabius Sunny'
   },
-  generator:
-    'রক্তদাতা রক্ত দাতা ব্লাড ডোনেশন রক্তদান রক্তগ্রহণ blood blood-donation donation donate blood blood-groups',
+  generator: 'blood blood-donation donation donate blood blood-groups',
   navItems: [
-    { name: 'হোম', href: '/' },
-    { name: 'আমাদের সম্পর্কে', href: '/about-us' },
-    { name: 'সাহায্য', href: '/admin' },
-    { name: 'ফোরাম', href: '/dashboard/receiver' },
-    { name: 'যোগাযোগ', href: '/contact' }
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about-us' },
+    { name: 'Help', href: '/admin' },
+    { name: 'Forum', href: '/dashboard/receiver' },
+    { name: 'Contact', href: '/contact' }
   ],
   donorDashboardItem: [
-    { name: 'ড্যাশবোর্ড', href: '/dashboard/donor', icon: LayoutDashboard },
+    { name: 'Dashboard', href: '/dashboard/donor', icon: LayoutDashboard },
     {
-      name: 'আবেদন',
+      name: 'Appointments',
       href: '/dashboard/donor/appointments',
       icon: ScrollText
     },
     {
-      name: 'আমার ডোনেশন',
+      name: 'My Donations',
       href: '/dashboard/donor/donations',
       icon: HeartPulse
     },
-    { name: 'রিভিউ', href: '/dashboard/donor/reviews', icon: Star },
-    { name: 'প্রোফাইল', href: '/dashboard/donor/profile', icon: UserCog2 },
-    { name: 'সেটিংস', href: '/dashboard/donor/settings', icon: Settings2Icon }
+    { name: 'Reviews', href: '/dashboard/donor/reviews', icon: Star },
+    { name: 'Profile', href: '/dashboard/donor/profile', icon: UserCog2 },
+    { name: 'Settings', href: '/dashboard/donor/settings', icon: Settings2Icon }
   ],
   userDashboardItem: [
-    { name: 'প্রোফাইল', href: '/dashboard/receiver', icon: UserCog2 },
+    { name: 'Profile', href: '/dashboard/receiver', icon: UserCog2 },
     {
-      name: 'আবেদন',
+      name: 'Appointments',
       href: '/dashboard/receiver/appointments',
       icon: ScrollText
     },
     {
-      name: 'রক্তপ্রাপ্তি',
+      name: 'Receipts',
       href: '/dashboard/receiver/receipts',
       icon: ScrollText
     }
   ],
   adminDashboardItem: [
-    { name: 'ডোনার রিকুয়েস্ট', href: '/dashboard/admin', icon: HeartPulseIcon },
+    { name: 'Donor Requests', href: '/dashboard/admin', icon: HeartPulseIcon },
     {
-      name: 'রিসিভার রিকুয়েস্ট',
+      name: 'Receiver Requests',
       href: '/dashboard/admin/receiver-requests',
       icon: Syringe
     },
     {
-      name: 'আবেদনসমূহ',
+      name: 'Appointments',
       href: '/dashboard/admin/appointments',
       icon: ScrollText,
       child: [
         {
-          name: 'আনভেরিফাইড আবেদন',
+          name: 'Unverified Appointments',
           href: '/dashboard/admin/appointments/unverified'
         },
         {
-          name: 'পেন্ডিং আবেদন',
+          name: 'Pending Appointments',
           href: '/dashboard/admin/appointments/pending'
         },
-        { name: 'গৃহীত আবেদন', href: '/dashboard/admin/appointments/accepted' },
         {
-          name: 'অস্বীকৃত আবেদন',
+          name: 'Accepted Appointments',
+          href: '/dashboard/admin/appointments/accepted'
+        },
+        {
+          name: 'Canceled Appointments',
           href: '/dashboard/admin/appointments/canceled'
         },
         {
-          name: 'রিজেক্টেড আবেদন',
+          name: 'Rejected Appointments',
           href: '/dashboard/admin/appointments/rejected'
         }
       ]
     },
     {
-      name: 'সকল ডোনার',
+      name: 'All Donor',
       href: '/dashboard/admin/all-donors',
       icon: HeartPulseIcon
     },
     {
-      name: 'সকল রিসিভার',
+      name: 'All Receiver',
       href: '/dashboard/admin/all-receivers',
       icon: Syringe
     },
-    { name: 'সেটিংস', href: '/dashboard/admin/settings', icon: Settings2 }
+    { name: 'Settings', href: '/dashboard/admin/settings', icon: Settings2 }
   ]
 }
 

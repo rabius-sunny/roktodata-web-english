@@ -15,7 +15,7 @@ export default function AuthBtn() {
       variant='primarysubtle'
       className='mt-8'
     >
-      প্রোফাইল <ArrowRight className='h-5' />
+      Profile <ArrowRight className='h-5' />
     </Button>
   ) : (
     <div className='mt-10 grid gap-y-4'>
@@ -24,15 +24,15 @@ export default function AuthBtn() {
         className='shadow-md'
         onClick={() => push('/auth/login')}
       >
-        লগইন করুন
+        LOGIN
       </Button>
       <Button
         size='lg'
-        className='shadow-md'
+        className='shadow-md uppercase'
         onClick={() => push('/auth/register?type=donor')}
         variant='secondarysubtle'
       >
-        রক্তদাতা রেজিস্ট্রেশন করুন
+        Register Donor
       </Button>
     </div>
   )

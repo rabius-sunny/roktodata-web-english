@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
@@ -43,7 +44,7 @@ export default function RegisterCred({ onSubmit, setStep, data }: TProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <CInput
-          label='ইমেইল অ্যাড্রেস'
+          label='Email Address'
           type='email'
           placeholder='user@active-email.com'
           icon={{ icon: MailCheck }}
@@ -54,7 +55,7 @@ export default function RegisterCred({ onSubmit, setStep, data }: TProps) {
       </div>
       <div>
         <CInput
-          label='ফোন নম্বর'
+          label='Phone no.'
           placeholder='01XXXXXXXXX'
           icon={{ icon: Phone }}
           register={register}
@@ -64,7 +65,7 @@ export default function RegisterCred({ onSubmit, setStep, data }: TProps) {
       </div>
       <div>
         <CInput
-          label='বিকল্প ফোন নম্বর'
+          label='Another Phone no.'
           placeholder='01XXXXXXXXX'
           icon={{ icon: Phone }}
           register={register}
@@ -74,7 +75,7 @@ export default function RegisterCred({ onSubmit, setStep, data }: TProps) {
       </div>
       <div>
         <CInput
-          label='পাসওয়ার্ড'
+          label='Password'
           icon={{ icon: ShieldCheck }}
           register={register}
           name='password'
@@ -91,10 +92,10 @@ export default function RegisterCred({ onSubmit, setStep, data }: TProps) {
           className='w-full mt-4 text-primary'
         >
           <ArrowLeft className='ml-2 h-4' />
-          পূর্ববর্তী
+          Previous
         </Button>
         <Button type='submit' className='w-full mt-4'>
-          পরবর্তী <ArrowRight className='ml-2 h-4' />
+          Next <ArrowRight className='ml-2 h-4' />
         </Button>
       </div>
     </form>

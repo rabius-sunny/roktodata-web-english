@@ -75,7 +75,7 @@ export default function Application() {
   useEffect(() => {
     const getData = async () => {
       const { error, data } = await getUserStatus(receiver)
-      if (error) errorAlert({ title: 'ইরর হয়েছে', body: error })
+      if (error) errorAlert({ title: 'Error occurred', body: error })
       if (data) setStatus(data)
     }
     getData()
@@ -156,7 +156,7 @@ export default function Application() {
     } catch (error) {
       setLoading(false)
       errorAlert({
-        title: 'ইরর হয়েছে',
+        title: 'Error occurred',
         body: 'ছবিগুলো আপলোড হয়নি। আবার চেষ্টা করুন।'
       })
     }
@@ -200,14 +200,14 @@ export default function Application() {
 
       if (res.error)
         errorAlert({
-          title: 'ইরর হয়েছে',
+          title: 'Error occurred',
           body: res.error
         })
       setLoading(false)
     } catch (error) {
       setLoading(false)
       errorAlert({
-        title: 'ইরর হয়েছে',
+        title: 'Error occurred',
         body: 'আবার চেষ্টা করুন।'
       })
     }
@@ -244,7 +244,7 @@ export default function Application() {
           <GTextarea
             compact
             register={register}
-            label='বর্তমান ঠিকানা'
+            label='বর্তমান Address'
             message={errors.address?.message}
             name='address'
           />

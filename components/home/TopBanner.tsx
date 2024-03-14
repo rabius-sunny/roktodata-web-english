@@ -14,7 +14,7 @@ export default function TopBanner({ isHome }: { isHome?: boolean }) {
             !isHome && 'text-primary'
           )}
         >
-          এখুনি রক্ত লাগবে ?
+          Need blood now ?
         </p>
         <a
           className={cn(

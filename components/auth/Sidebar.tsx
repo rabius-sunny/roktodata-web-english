@@ -45,7 +45,7 @@ export default function Sidebar({ mobile, user, admin, donor }: TProps) {
             href='/'
             className='flex items-center gap-2 font-medium text-sm mb-4'
           >
-            <ArrowLeft /> হোম এ যান
+            <ArrowLeft /> go home
           </Link>
         </div>
       )}
@@ -77,7 +77,7 @@ export default function Sidebar({ mobile, user, admin, donor }: TProps) {
                   {item.name}
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className='min-w-[300px]'>
-                  <DropdownMenuLabel>আবেদনসমূহ</DropdownMenuLabel>
+                  <DropdownMenuLabel>Appointments</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   {item.child.map((childLink, i) => (
                     <DropdownMenuItem
@@ -122,7 +122,7 @@ export default function Sidebar({ mobile, user, admin, donor }: TProps) {
               )}
             >
               <LogOut />
-              লগআউট
+              Logout
             </button>
           )}
         </div>

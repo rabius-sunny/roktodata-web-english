@@ -70,8 +70,8 @@ export default function Register() {
       if (res.ok) {
         if (userType === 'donor') {
           successAlert({
-            title: 'সফল হয়েছে',
-            body: 'আপনার রেজিস্ট্রেশন সফল হয়েছে। ভেরিফাই করা হলে জানিয়ে দেয়া হবে।'
+            title: 'Succeed',
+            body: 'Your registration is waiting for approval. You will be notified.'
           })
           replace('/auth/login')
         } else if (userType === 'receiver') {
@@ -89,15 +89,15 @@ export default function Register() {
     <div className='grid gap-y-4 auth__bg px-4 py-8 sm:py-12 rounded-2xl'>
       <div className='text-center mb-6'>
         <h1 className='text-3xl font-bold text-primary mb-4'>
-          {userType === 'donor' ? 'রক্তদাতা' : 'রক্তগ্রহীতা'} একাউন্ট তৈরি করুন
+          Create a {userType === 'donor' ? 'Donor' : 'Receiver'} account
         </h1>
         <p className='text-sm mt-4 text-light font-medium flex-center gap-2'>
-          একাউন্ট আছে?
+          Already have account?
           <Link
             className='text-secondary font-semibold flex-center'
             href={donor ? `/auth/login?donor=${donor}` : '/auth/login'}
           >
-            লগইন করুন
+            Login
             <ArrowRight className='size-5' />
           </Link>
         </p>
@@ -113,8 +113,7 @@ export default function Register() {
       {step === 4 && (
         <div>
           <p className='font-semibold text-lg text-center text-secondary py-1'>
-            আপনার {userType === 'receiver' && 'আকাঙ্ক্ষিত'} রক্তের গ্রুপ
-            নির্বাচন করুন
+            Select your blood group
           </p>
 
           <div className='grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 mt-8 mb-4'>
@@ -136,7 +135,7 @@ export default function Register() {
           </div>
           {warn && (
             <p className='text-xs bg-danger py-1 px-4 text-white'>
-              একটি রক্তের গ্রুপ সিলেক্ট করুন
+              Select a blood group.
             </p>
           )}
 
@@ -144,11 +143,10 @@ export default function Register() {
           <AlertDialog open={isOpen}>
             <AlertDialogContent>
               <AlertDialogHeader builtin>
-                শর্তাবলীর সাথে সম্মত হোন
+                Accept terms & conditions
               </AlertDialogHeader>
               <AlertDialogDescription>
-                রক্তদাতা.COM এ ডোনার হতে হলে আপনাকে রক্তদানের পূর্বশর্তগুলোর
-                সাথে সম্মত হতে হবে।
+                Before proceed to Roktocata.com, you have agree with our rules.
               </AlertDialogDescription>
               <div>
                 <p>
@@ -172,10 +170,10 @@ export default function Register() {
                   onClick={() => setIsOpen(false)}
                   variant='primarysubtle'
                 >
-                  আমি সম্মত নই
+                  I disagree
                 </Button>
                 <Button onClick={create_user} variant='secondary'>
-                  আমি সম্মত
+                  I agree
                 </Button>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -186,7 +184,7 @@ export default function Register() {
               variant='secondary'
               className='w-full mt-4'
             >
-              আবেদন সম্পূর্ণ করুন
+              Complete application
             </Button>
           </div>
           <div>
@@ -196,7 +194,7 @@ export default function Register() {
               variant='outline'
             >
               <ArrowLeft className='ml-2 h-4' />
-              পূর্ববর্তী
+              Previous
             </Button>
           </div>
         </div>

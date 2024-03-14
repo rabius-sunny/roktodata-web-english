@@ -56,7 +56,7 @@ export default function DonationCards({
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        {forDonor ? 'রক্তগ্রহীতার তথ্য' : 'রক্তদাতার তথ্য'}
+                        {forDonor ? 'Receivers Info.' : 'Donors Info.'}
                       </AlertDialogHeader>
                       <div className='mb-2 mx-auto'>
                         <div className='flex-center'>
@@ -67,31 +67,33 @@ export default function DonationCards({
                         <div className='mt-4 grid gap-y-2 min-w-[300px]'>
                           <div className='grid grid-cols-2'>
                             <div className='col-auto'>
-                              <p className='font-medium text-dark'>জেলা</p>
-                              <p>{getAppropriateData(donation).jilla}</p>
+                              <p className='font-medium text-dark'>District</p>
+                              <p>{getAppropriateData(donation).district}</p>
                             </div>
                             <div className='col-auto'>
-                              <p className='font-medium text-dark'>উপজেলা</p>
-                              <p>{getAppropriateData(donation).subJilla}</p>
+                              <p className='font-medium text-dark'>
+                                Sub District
+                              </p>
+                              <p>{getAppropriateData(donation).subDistrict}</p>
                             </div>
                           </div>
                           <div className='grid grid-cols-2'>
                             <div className='col-auto'>
-                              <p className='font-medium text-dark'>থানা</p>
-                              <p>{getAppropriateData(donation).thana}</p>
+                              <p className='font-medium text-dark'>State</p>
+                              <p>{getAppropriateData(donation).state}</p>
                             </div>
                             <div className='col-auto'>
-                              <p className='font-medium text-dark'>ধর্ম</p>
+                              <p className='font-medium text-dark'>Religion</p>
                               <p>{getAppropriateData(donation).religion}</p>
                             </div>
                           </div>
                           <div>
-                            <p className='font-medium text-dark'>ঠিকানা</p>
+                            <p className='font-medium text-dark'>Address</p>
                             <p>{getAppropriateData(donation).address}</p>
                           </div>
 
                           <div>
-                            <p className='font-medium text-dark'>ফোন নম্বর</p>
+                            <p className='font-medium text-dark'>Phone no.</p>
                             <p>
                               {getAppropriateData(donation).phone},{' '}
                               {getAppropriateData(donation).phone2}

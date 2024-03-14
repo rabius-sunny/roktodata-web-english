@@ -39,7 +39,7 @@ export default function Login() {
       if (res.error) errorAlert({ body: res.error })
       setLoading(false)
     } catch (error) {
-      errorAlert({ body: 'ভুল ইমেইল অথবা পাসওয়ার্ড' })
+      errorAlert({ body: 'Wrong email or password!' })
       setLoading(false)
     }
   }
@@ -56,12 +56,12 @@ export default function Login() {
   return (
     <div className='auth__bg grid gap-y-4 px-3 py-8 sm:px-12 pb-4 rounded-2xl'>
       <div className='text-center mb-4'>
-        <h1 className='text-3xl font-bold text-primary'>লগইন করুন</h1>
+        <h1 className='text-3xl font-bold text-primary'>LOGIN</h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <CInput
-            label='ইমেইল'
+            label='Email'
             placeholder='me@rabius-sunny.com'
             icon={{ icon: User2 }}
             register={register}
@@ -72,7 +72,7 @@ export default function Login() {
         </div>
         <div>
           <CInput
-            label='পাসওয়ার্ড'
+            label='Password'
             icon={{ icon: ShieldCheck }}
             register={register}
             name='password'
@@ -88,16 +88,16 @@ export default function Login() {
             type='submit'
             className='w-full mt-4'
           >
-            লগইন
+            Login
           </Button>
         </div>
         <p className='text-sm mt-4 text-light font-medium flex-center gap-2 '>
-          আপনি কি একজন রক্তদাতা?{' '}
+          Are you a donor?
           <Link
             className='text-secondary font-semibold flex-center'
             href='/auth/register?type=donor'
           >
-            রেজিস্ট্রেশন করুন
+            Register here
             <ArrowRight className='size-5' />
           </Link>
         </p>
@@ -106,7 +106,7 @@ export default function Login() {
             className='text-primary font-semibold flex-center'
             href='/auth/admin'
           >
-            অ্যাডমিন লগইন
+            Admin Login
             <ArrowRight className='size-5' />
           </Link>
         </div>

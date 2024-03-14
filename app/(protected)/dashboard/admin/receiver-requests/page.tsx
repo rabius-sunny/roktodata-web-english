@@ -10,7 +10,7 @@ export default async function ReceiverRequests() {
       <RequestTable
         data={data.data}
         userType='RECEIVER'
-        title='সকল গ্রহীতা রিকুয়েস্ট'
+        title='All Receiver Requests'
       />
     </div>
   )

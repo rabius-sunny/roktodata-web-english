@@ -20,10 +20,10 @@ export default function ErrorPage({ message }: { message?: string }) {
         <h1 className='text-9xl font-black text-red-500 text-center'>4O4</h1>
         <div className='font-medium text-center'>
           <p className='text-primary'>
-            {message || 'দুঃখিত! ইরর হয়েছে। কোনো ডাটা পাওয়া যায়নি।'}
+            {message || 'Error occurred, no data found.'}
           </p>
           <Button variant='link' onClick={() => back()}>
-            <ArrowLeftIcon /> আবার চেষ্টা করুন
+            <ArrowLeftIcon /> Try again
           </Button>
         </div>
       </div>

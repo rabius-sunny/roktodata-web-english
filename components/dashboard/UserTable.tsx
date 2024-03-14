@@ -41,7 +41,7 @@ export default function UserTable({ title, data, userType }: TProps) {
         {!data?.length && (
           <TableCaption>
             <h1 className='text-primary h-40 flex items-center justify-center'>
-              কোনো ডাটা পাওয়া যায়নি।
+              No data found.
             </h1>
           </TableCaption>
         )}
@@ -62,10 +62,12 @@ export default function UserTable({ title, data, userType }: TProps) {
                       }`,
                       action: () =>
                         confirmAlertAsync({
-                          title: `${
-                            userType === 'DONOR' ? 'ডোনারকে' : 'রক্তগ্রহীতাকে'
-                          } ডিলিট করতে চান?`,
-                          body: 'ডিলিট করা হলে সকল তথ্য মুছে যাবে।',
+                          title: `Delete this ${
+                            userType === 'DONOR'
+                              ? 'Donor account'
+                              : 'Receiver account'
+                          } ?`,
+                          body: 'All account info and other related data will be deleted.',
                           precom: () =>
                             deleteUser(
                               item.id,

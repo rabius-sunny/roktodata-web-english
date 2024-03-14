@@ -41,11 +41,9 @@ export default function DonorProfile() {
   ) : error ? (
     <div className='flex-center h-screen'>
       <div className='text-center text-5xl'>
-        <p className='text-red-500 font-medium'>
-          একটি ইরর হয়েছে, কোনো ডোনার পাওয়া যায়নি
-        </p>
+        <p className='text-red-500 font-medium'>Error occurred, try again</p>
         <Button variant='link' onClick={() => back()}>
-          <ArrowLeftIcon /> আবার চেষ্টা করুন
+          <ArrowLeftIcon /> Try again
         </Button>
       </div>
     </div>
@@ -76,26 +74,26 @@ export default function DonorProfile() {
           <div className='p-4 grid gap-y-2'>
             <div className='grid grid-cols-2'>
               <div className='col-auto'>
-                <p className='font-medium text-dark'>জেলা</p>
-                <p className=''>{data.donor.user.jilla}</p>
+                <p className='font-medium text-dark'>District</p>
+                <p className=''>{data.donor.user.district}</p>
               </div>
               <div className='col-auto'>
-                <p className='font-medium text-dark'>উপজেলা</p>
-                <p className=''>{data.donor.user.subJilla}</p>
+                <p className='font-medium text-dark'>Sub District</p>
+                <p className=''>{data.donor.user.subDistrict}</p>
               </div>
             </div>
             <div className='grid grid-cols-2'>
               <div className='col-auto'>
-                <p className='font-medium text-dark'>থানা</p>
-                <p className=''>{data.donor.user.thana}</p>
+                <p className='font-medium text-dark'>State</p>
+                <p className=''>{data.donor.user.state}</p>
               </div>
               <div className='col-auto'>
-                <p className='font-medium text-dark'>ধর্ম</p>
+                <p className='font-medium text-dark'>Religion</p>
                 <p className=''>{data.donor.user.religion}</p>
               </div>
             </div>
             <div>
-              <p className='font-medium text-dark'>ঠিকানা</p>
+              <p className='font-medium text-dark'>Address</p>
               <p className=''>{data.donor.user.address}</p>
             </div>
           </div>
@@ -109,17 +107,17 @@ export default function DonorProfile() {
                 : `/auth/register?type=receiver&donor=${id}`
             }
           >
-            আবেদন করুন <ArrowRight className='size-5' />
+            Apply now <ArrowRight className='size-5' />
           </Link>
         </div>
       </div>
 
       <div className='mt-12'>
         <Container size='md'>
-          <h1>পূর্বের ডোনেশনসমূহ</h1> <hr className='mt-2 border-dark/20' />
+          <h1>Previous Donations</h1> <hr className='mt-2 border-dark/20' />
           <div className='my-8'>
             <div className='text-red-600 font-medium'>
-              এই ডোনারের পূর্বের কোনো ডোনেশন নেই।
+              This donor has no donations previously.
             </div>
           </div>
         </Container>

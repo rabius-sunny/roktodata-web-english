@@ -24,13 +24,13 @@ export default function AppointmentsDetails() {
       back()
       return { ok: true }
     }
-    if (res.error) return { error: 'আবার চেষ্টা করুন' }
+    if (res.error) return { error: 'Try again' }
   }
   if (isLoading) return <div>Loading...</div>
   if (error)
     return (
       <div className='text-red-500 font-medium text-3xl text-center'>
-        ইরর হয়েছে, আবার চেষ্টা করুন।
+        Error occurred, try again.
       </div>
     )
   return (
@@ -42,10 +42,10 @@ export default function AppointmentsDetails() {
             <Button
               onClick={() =>
                 confirmAlertAsync({
-                  body: 'আবেদনটি ভেরিফাই করা হবে?',
+                  body: 'Verify the application ?',
                   precom: () => handleAction('PENDING'),
                   successText:
-                    'আবেদনটি ভেরিফাই করা হয়েছে এবং ডোনারকে জানানো হয়েছে।'
+                    'Successfully verified the application and donor is notified.'
                 })
               }
               shadow
@@ -53,21 +53,21 @@ export default function AppointmentsDetails() {
               size='lg'
               variant='secondary'
             >
-              ভেরিফাই করুন
+              Verify
             </Button>
             <Button
               onClick={() =>
                 confirmAlertAsync({
-                  body: 'আবেদনটি রিজেক্ট করা হবে?',
+                  body: 'Reject the application ?',
                   precom: () => handleAction('REJECTED'),
-                  successText: 'আবেদনটি রিজেক্ট করা হয়েছে।'
+                  successText: 'Application got rejected.'
                 })
               }
               shadow
               className='w-full'
               size='lg'
             >
-              রিজেক্ট করুন
+              Reject
             </Button>
           </div>
         )}

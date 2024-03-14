@@ -19,7 +19,7 @@ export default async function AppointmentsForDonor() {
         />
       ) : null}
       <AppointmentsTable
-        title='গৃহীত আবেদন'
+        title='Accepted Appointments'
         data={data.filter((item: TAppointment) => item.status === 'ACCEPTED')}
       />
     </div>

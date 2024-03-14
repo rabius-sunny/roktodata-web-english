@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { updateUser } from '@/actions/user'
 import { alldata, TAlldata } from '@/constants/schema/register'
-import { genders, jilla } from '@/constants/static'
+import { district, genders } from '@/constants/static'
 import { errorAlert, successAlert } from '@/services/alerts/alerts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from '@prisma/client'
@@ -42,9 +42,9 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
       gender: data.gender,
       religion: data.religion,
       age: data.age.toString(),
-      jilla: data.jilla,
-      subJilla: data.subJilla,
-      thana: data.thana,
+      district: data.district,
+      subDistrict: data.subDistrict,
+      state: data.state,
       address: data.address,
       email: data.email,
       phone: data.phone,
@@ -57,7 +57,7 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
     setLoading(true)
     try {
       const res = await updateUser({ ...data, age: Number(data.age) })
-      res.ok && successAlert({ body: 'তথ্যগুলো আপডেট করা হয়েছে।' })
+      res.ok && successAlert({ body: 'Info. updated successfully.' })
       res.error && errorAlert({ title: 'Error Ocurred', body: res.error })
       setLoading(false)
     } catch {
@@ -68,11 +68,11 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
 
   return (
     <div className='card-shadow bg-white px-2 py-4 lg:px-4 lg:py-8'>
-      <h1 className='text-dark'>প্রোফাইল তথ্য</h1>
+      <h1 className='text-dark'>Profile Info.</h1>
       <p className='text-litetext text font-light text-sm'>
         {onProfile
-          ? 'যেকোনো ফিল্ড পরিবর্তন করে এডিট সম্পন্ন করতে পারেন।'
-          : 'একাউন্টের বেসিক তথ্যগুলো এখানে দেখানো হয়েছে, বিস্তারিত দেখতে ও এডিট করতে এডিট বাটনে ক্লিক করুন।'}
+          ? 'You can change any info. on any field to complete editing.'
+          : 'Basic info. of your account is shown here, for details and editing, hit edit below.'}
       </p>
       <hr className='my-4' />
       {onProfile ? (
@@ -83,26 +83,24 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
           >
             <div className='lg:grid grid-cols-5 gap-4'>
               <div className='col-span-1'>
-                <h3 className='font-semibold text-secondary'>
-                  প্রাথমিক তথ্যাদি
-                </h3>
+                <h3 className='font-semibold text-secondary'>Primary Info.</h3>
               </div>
               <div className='col-span-4 max-w-lg'>
                 <GInput
                   register={register}
-                  label='আপনার নাম'
+                  label='Your Name'
                   name='name'
                   message={errors.name?.message}
                 />
                 <GInput
                   register={register}
-                  label='আইডেন্টিটি'
+                  label='Identity'
                   name='identity'
                   message={errors.identity?.message}
                 />
                 <GSelect
                   register={register}
-                  label='লিঙ্গ'
+                  label='Gender'
                   name='gender'
                   data={genders}
                   message={errors.gender?.message}
@@ -110,13 +108,13 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
                 <GInput
                   register={register}
                   name='phone'
-                  label='ফোন নম্বর'
+                  label='Phone no.'
                   message={errors.phone?.message}
                 />
                 <GInput
                   register={register}
                   name='phone2'
-                  label='বিকল্প ফোন নম্বর'
+                  label='Another Phone no.'
                   message={errors.phone2?.message}
                 />
               </div>
@@ -124,34 +122,32 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
             <hr />
             <div className='lg:grid grid-cols-5 gap-4'>
               <div className='col-span-1'>
-                <h3 className='font-semibold text-secondary'>
-                  ঠিকানা সম্পর্কিত
-                </h3>
+                <h3 className='font-semibold text-secondary'>Address</h3>
               </div>
               <div className='col-span-4 max-w-lg'>
                 <GSelect
                   register={register}
-                  name='jilla'
-                  label='জেলা'
-                  data={jilla.map((item) => ({ name: item, value: item }))}
-                  message={errors.jilla?.message}
+                  name='district'
+                  label='District'
+                  data={district.map((item) => ({ name: item, value: item }))}
+                  message={errors.district?.message}
                 />
                 <GInput
                   register={register}
-                  name='subJilla'
-                  label='উপজেলা'
-                  message={errors.subJilla?.message}
+                  name='subDistrict'
+                  label='Sub District'
+                  message={errors.subDistrict?.message}
                 />
                 <GInput
                   register={register}
-                  name='thana'
-                  label='থানা'
-                  message={errors.thana?.message}
+                  name='state'
+                  label='State'
+                  message={errors.state?.message}
                 />
                 <GInput
                   register={register}
                   name='address'
-                  label='বিস্তারিত ঠিকানা'
+                  label='Details Address'
                   message={errors.address?.message}
                 />
               </div>
@@ -159,19 +155,19 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
             <hr />
             <div className='lg:grid grid-cols-5 gap-4'>
               <div className='col-span-1'>
-                <h3 className='font-semibold text-secondary'>সিকিউরিটি তথ্য</h3>
+                <h3 className='font-semibold text-secondary'>Security Info.</h3>
               </div>
               <div className='col-span-4 max-w-lg'>
                 <GInput
                   register={register}
                   name='email'
-                  label='ইমেইল অ্যাড্রেস'
+                  label='Email'
                   message={errors.email?.message}
                 />
                 <GInput
                   register={register}
                   name='password'
-                  label='পাসওয়ার্ড'
+                  label='Password'
                   message={errors.password?.message}
                 />
               </div>
@@ -182,7 +178,7 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
               type='submit'
               className='mt-4'
             >
-              <CheckCircle /> এডিট সম্পন্ন করুন
+              <CheckCircle /> Complete Edit
             </Button>
           </form>
         </Container>
@@ -190,25 +186,25 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
         <div className='flex flex-col gap-3'>
           <div>
             <div className='flex items-center gap-2'>
-              <p className='font-medium text-dark'>পূর্ণ নাম: </p>
+              <p className='font-medium text-dark'>Full Name: </p>
               <p className='font-light text-litetext'>{data.name}</p>
             </div>
           </div>
           <div>
             <div className='flex items-center gap-2'>
-              <p className='font-medium text-dark'>ফোন নং: </p>
+              <p className='font-medium text-dark'>Phone no.: </p>
               <p className='font-light text-litetext'>{data.phone}</p>
             </div>
           </div>
           <div>
             <div className='flex items-center gap-2'>
-              <p className='font-medium text-dark'>ইমেইল:</p>
+              <p className='font-medium text-dark'>Email:</p>
               <p className='font-light text-litetext'>{data.email}</p>
             </div>
           </div>
           <div>
             <div className='flex items-center gap-2'>
-              <p className='font-medium text-dark'>ঠিকানা:</p>
+              <p className='font-medium text-dark'>Address:</p>
               <p className='font-light text-litetext'>{data.address}</p>
             </div>
           </div>
@@ -224,7 +220,7 @@ export default function ProfileCard({ onProfile, data, isLoading }: TProps) {
           </div>
           <div className='text-right'>
             <Button onClick={() => push('/dashboard/donor/profile')}>
-              এডিট করুন <ArrowRight height={16} />
+              Edit info <ArrowRight height={16} />
             </Button>
           </div>
         </div>

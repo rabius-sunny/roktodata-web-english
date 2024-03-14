@@ -41,7 +41,7 @@ export default function RequestTable({ title, data, userType }: TProps) {
         {!data?.length && (
           <TableCaption>
             <h1 className='text-primary h-40 flex items-center justify-center'>
-              কোনো ডাটা পাওয়া যায়নি।
+              No data found.
             </h1>
           </TableCaption>
         )}

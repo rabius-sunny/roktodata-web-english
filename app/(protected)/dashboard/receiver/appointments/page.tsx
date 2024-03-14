@@ -93,7 +93,7 @@ export default async function ReceiverApplications() {
     </div>
   ) : error ? (
     <h1 className='text-center mt-4 text-red-500'>
-      ইরর হয়েছে, আবার চেষ্টা করুন।
+      Error occurred, try again.
     </h1>
   ) : (
     <h1 className='text-center mt-4 text-red-500'>আপনার কোনো আবেদন নেই।</h1>
