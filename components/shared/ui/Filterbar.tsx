@@ -2,7 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 import { searchdata, TSearchdata } from '@/constants/schema/others'
-import { bloodGroups, district, religions } from '@/constants/static'
+import {
+  bloodGroups,
+  district as districtList,
+  religions
+} from '@/constants/static'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -11,7 +15,7 @@ import { GSelect } from '@/components/customs/GInput'
 
 export default function Filterbar({ data }: { data: TSearchdata }) {
   const { push } = useRouter()
-  const { bloodType, district: jillaParams, ageFrom, ageTo, religion } = data
+  const { bloodType, district, ageFrom, ageTo, religion } = data
   const {
     register,
     handleSubmit,
@@ -47,8 +51,8 @@ export default function Filterbar({ data }: { data: TSearchdata }) {
             <GSelect
               theme='dark'
               size='sm'
-              defaultValue={jillaParams}
-              data={district.map((item) => ({
+              defaultValue={district}
+              data={districtList.map((item) => ({
                 name: item,
                 value: item
               }))}

@@ -7,7 +7,7 @@ import {
   Sun
 } from 'lucide-react'
 
-export type TJilla = (typeof district)[0]
+export type TDistrict = (typeof district)[0]
 export type TWhydonate = {
   icon: LucideIcon
   title: string

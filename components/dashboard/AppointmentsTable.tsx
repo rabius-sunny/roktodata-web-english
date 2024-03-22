@@ -20,13 +20,13 @@ type TProps = {
   data: any
   title: string
   isAdmin?: boolean
-  type?: TAppointmentStatus
+  type?: 'declined' | 'normal'
 }
 export default function AppointmentsTable({
   data,
   title,
   isAdmin,
-  type
+  type = 'normal'
 }: TProps) {
   return (
     <div>
@@ -44,7 +44,7 @@ export default function AppointmentsTable({
         {!data?.length && (
           <TableCaption>
             <h1 className='text-primary text-xl h-40 flex items-center justify-center'>
-              কোনো ডাটা পাওয়া যায়নি।
+              No data found.
             </h1>
           </TableCaption>
         )}
@@ -71,16 +71,19 @@ export default function AppointmentsTable({
                   >
                     <Eye className='size-7' />
                   </Link>
-                  <Trash2Icon
-                    onClick={() =>
-                      confirmAlertAsync({
-                        body: 'আবেদনটি ডেটাবেজ থেকে মুছে ফেলা হবে?',
-                        precom: () => deleteAppointment(id),
-                        successText: 'আবেদনটি মুছে ফেলা হয়েছে।'
-                      })
-                    }
-                    className='size-6 text-red-500 cursor-pointer hover:text-secondary'
-                  />
+                  {isAdmin && (
+                    <Trash2Icon
+                      onClick={() =>
+                        confirmAlertAsync({
+                          body: 'Delete the application?',
+                          precom: () => deleteAppointment(id),
+                          successText:
+                            'Application has been removed from database.'
+                        })
+                      }
+                      className='size-6 text-red-500 cursor-pointer hover:text-secondary'
+                    />
+                  )}
                 </TableCell>
               </TableRow>
             )

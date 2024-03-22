@@ -19,9 +19,9 @@ model User {
   phone        String        @unique
   phone2       String        @unique @map("another_phone")
   bloodType    String        @map("blood_type")
-  jilla        String // locations 
-  subJilla     String        @map("sub_jilla ")
-  thana        String
+  district     String // locations 
+  subDistrict  String        @map("sub_district ")
+  state        String
   address      String
   status       ProfileStatus @default(PENDING) // profiles
   role         ProfileType   @default(DONOR)
@@ -45,9 +45,9 @@ model Receiver {
   phone               String                @unique
   phone2              String                @unique @map("another_phone")
   bloodType           String                @map("blood_type")
-  jilla               String // locations 
-  subJilla            String                @map("sub_jilla ")
-  thana               String
+  district            String // locations 
+  subDistrict         String                @map("sub_district ")
+  state               String
   address             String
   status              ProfileStatus         @default(PENDING) // profiles
   role                ProfileType           @default(RECEIVER)
@@ -146,17 +146,17 @@ model Message {
 }
 
 model Hospitals {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  phone     String
-  email     String
-  jilla     String
-  subJilla  String   @map("sub_jilla ")
-  thana     String
-  address   String
-  doctors   String[]
-  open      String
-  createdAt DateTime @default(now())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  phone       String
+  email       String
+  district    String
+  subDistrict String   @map("sub_district ")
+  state       String
+  address     String
+  doctors     String[]
+  open        String
+  createdAt   DateTime @default(now())
 
   @@map("hospitals")
 }

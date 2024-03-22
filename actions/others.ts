@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+import { auth } from '@/configs/auth'
 import { TSearchdata } from '@/constants/schema/others'
 import removeProperties from '@/helper/removeProperties'
 import { error_res, success_res } from '@/helper/static-response'
@@ -141,6 +142,32 @@ export const getAppointments = async () => {
   }
 }
 
+export const getDeclinedAppointments = async () => {
+  try {
+    const appointments = await prisma.declinedAppointment.findMany({
+      include: {
+        donor: {
+          include: {
+            user: {
+              select: {
+                name: true
+              }
+            }
+          }
+        },
+        receiver: {
+          select: {
+            name: true
+          }
+        }
+      }
+    })
+    return success_res(appointments)
+  } catch {
+    return error_res()
+  }
+}
+
 export const getAppointmentForUser = async (id: string) => {
   try {
     const applications = await prisma.appointment.findUnique({
@@ -192,42 +219,89 @@ export const getUserStatus = async (id: string) => {
   }
 }
 
-export const getDonations = async () => {
+export const getDonations = async (type: TUserType) => {
+  const session = await auth()
+  if (!session) return error_res('Unauthenticated')
+
+  const id = session.user.id
+
   try {
-    const data = await prisma.donation.findMany({
-      include: {
-        receiver: {
-          select: {
-            name: true,
-            religion: true,
-            bloodType: true,
-            district: true,
-            subDistrict: true,
-            state: true,
-            address: true,
-            phone: true,
-            phone2: true
-          }
-        },
-        donor: {
-          include: {
-            user: {
-              select: {
-                name: true,
-                religion: true,
-                bloodType: true,
-                district: true,
-                subDistrict: true,
-                state: true,
-                address: true,
-                phone: true,
-                phone2: true
+    const data =
+      type === 'DONOR'
+        ? await prisma.donation.findMany({
+            where: {
+              donor: {
+                userId: id
+              }
+            },
+            include: {
+              receiver: {
+                select: {
+                  name: true,
+                  religion: true,
+                  bloodType: true,
+                  district: true,
+                  subDistrict: true,
+                  state: true,
+                  address: true,
+                  phone: true,
+                  phone2: true
+                }
+              },
+              donor: {
+                include: {
+                  user: {
+                    select: {
+                      name: true,
+                      religion: true,
+                      bloodType: true,
+                      district: true,
+                      subDistrict: true,
+                      state: true,
+                      address: true,
+                      phone: true,
+                      phone2: true
+                    }
+                  }
+                }
               }
             }
-          }
-        }
-      }
-    })
+          })
+        : await prisma.donation.findMany({
+            where: { receiverId: id },
+            include: {
+              receiver: {
+                select: {
+                  name: true,
+                  religion: true,
+                  bloodType: true,
+                  district: true,
+                  subDistrict: true,
+                  state: true,
+                  address: true,
+                  phone: true,
+                  phone2: true
+                }
+              },
+              donor: {
+                include: {
+                  user: {
+                    select: {
+                      name: true,
+                      religion: true,
+                      bloodType: true,
+                      district: true,
+                      subDistrict: true,
+                      state: true,
+                      address: true,
+                      phone: true,
+                      phone2: true
+                    }
+                  }
+                }
+              }
+            }
+          })
     return success_res(data)
   } catch {
     return error_res()

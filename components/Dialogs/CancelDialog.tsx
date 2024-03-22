@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { cancelAppointment } from '@/actions/donor'
+import { declineAppointment } from '@/actions/admin'
 import { errorAlert, successAlert } from '@/services/alerts/alerts'
 
 import {
@@ -32,9 +32,10 @@ export default function CancelDialog({ open, setOpen, appId }: TPorps) {
       alert('Fill at least one field.')
       return
     }
-    const res = await cancelAppointment(
+    const res = await declineAppointment(
       appId,
-      checked ? "I've already another request confirmed" : msg
+      'CANCELED',
+      checked ? 'আমি ইতোমধ্যে অন্য ডোনেশন রিকুয়েস্ট কনফার্ম করেছি।' : msg
     )
     if (res.ok) {
       successAlert({ body: 'Request has been canceled.' })
