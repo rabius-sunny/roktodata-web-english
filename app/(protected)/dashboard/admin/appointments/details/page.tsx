@@ -1,7 +1,10 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { updateAppointmentStatus } from '@/actions/admin'
+import {
+  rejectOrCancelAppointment,
+  updateAppointmentStatus
+} from '@/actions/admin'
 import { confirmAlertAsync } from '@/services/alerts/alerts'
 import requests from '@/services/network/http'
 
@@ -19,18 +22,21 @@ export default function AppointmentsDetails() {
     requests.get
   )
   const handleAction = async (status: TAppointmentStatus) => {
-    const res = await updateAppointmentStatus(appId, status)
+    const res =
+      status === 'REJECTED'
+        ? await rejectOrCancelAppointment(appId, 'REJECTED')
+        : await updateAppointmentStatus(appId, status)
     if (res.ok) {
       back()
       return { ok: true }
     }
-    if (res.error) return { error: 'Try again' }
+    if (res.error) return { error: 'try again.' }
   }
   if (isLoading) return <div>Loading...</div>
   if (error)
     return (
       <div className='text-red-500 font-medium text-3xl text-center'>
-        Error occurred, try again.
+        Error ocurred, please try again.
       </div>
     )
   return (
@@ -42,10 +48,10 @@ export default function AppointmentsDetails() {
             <Button
               onClick={() =>
                 confirmAlertAsync({
-                  body: 'Verify the application ?',
+                  body: 'Verify the application?',
                   precom: () => handleAction('PENDING'),
                   successText:
-                    'Successfully verified the application and donor is notified.'
+                    'Application has been verified and donor has been notified.'
                 })
               }
               shadow
@@ -58,9 +64,9 @@ export default function AppointmentsDetails() {
             <Button
               onClick={() =>
                 confirmAlertAsync({
-                  body: 'Reject the application ?',
+                  body: 'Reject the application?',
                   precom: () => handleAction('REJECTED'),
-                  successText: 'Application got rejected.'
+                  successText: 'Application has been added to rejected list.'
                 })
               }
               shadow
