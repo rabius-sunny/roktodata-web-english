@@ -32,8 +32,8 @@ export const siteInfo = {
   navItems: [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about-us' },
-    { name: 'Help', href: '/admin' },
-    { name: 'Forum', href: '/dashboard/receiver' },
+    { name: 'Help', href: '/help' },
+    { name: 'Forum', href: '/forum' },
     { name: 'Contact', href: '/contact' }
   ],
   donorDashboardItem: [
