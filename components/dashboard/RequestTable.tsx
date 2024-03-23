@@ -74,30 +74,30 @@ const requestActions = ({ id, bloodType }: TUser, userType: TUserType) => {
         name: 'accept',
         action: () =>
           confirmAlertAsync({
-            title: 'রিকুয়েস্টটি কনফার্ম করতে চান?',
-            body: 'রিকুয়েস্টটি কনফার্ম করা হলে উক্ত ডোনারের একটি ভেরিফাইড প্রোফাইল তৈরি হবে।',
+            title: 'Confirm the request?',
+            body: 'After the confirmation, a new donor profile will be created against the user.',
             precom: () =>
               createDonorProfile({
                 bloodType,
                 id,
                 status: 'ACCEPTED'
               }),
-            successText: 'সফলভাবে ডোনার ক্রিয়েট হয়েছে।'
+            successText: 'Successfully created donor profile.'
           })
       },
       {
         name: 'reject',
         action: () =>
           confirmAlertAsync({
-            title: 'রিকুয়েস্টটি বাতিল করতে চান?',
-            body: 'রিকুয়েস্টটি বাতিল করা হলে উক্ত ডোনারের কোনো প্রোফাইল তৈরি হবে না।',
+            title: 'Reject the request?',
+            body: 'On rejection, no profile will be created.',
             precom: () =>
               createDonorProfile({
                 bloodType,
                 id,
                 status: 'REJECTED'
               }),
-            successText: 'রিকুয়েস্টটি বাতিল করা হয়েছে।'
+            successText: 'Request has been rejected.'
           })
       }
     ]
@@ -107,28 +107,28 @@ const requestActions = ({ id, bloodType }: TUser, userType: TUserType) => {
         name: 'accept',
         action: () =>
           confirmAlertAsync({
-            title: 'রিকুয়েস্টটি কনফার্ম করতে চান?',
-            body: 'রিকুয়েস্টটি কনফার্ম করা হলে উক্ত রক্তগ্রহীতার একটি ভেরিফাইড প্রোফাইল তৈরি হবে।',
+            title: 'Confirm the request?',
+            body: 'After the confirmation, a new receiver profile will be created against the user.',
             precom: () =>
               updateReceiverProfile({
                 id,
                 status: 'ACCEPTED'
               }),
-            successText: 'সফলভাবে রক্তগ্রহীতা একাউন্ট ক্রিয়েট হয়েছে।'
+            successText: 'Successfully created the receiver profile.'
           })
       },
       {
         name: 'reject',
         action: () =>
           confirmAlertAsync({
-            title: 'রিকুয়েস্টটি বাতিল করতে চান?',
-            body: 'রিকুয়েস্টটি বাতিল করা হলে উক্ত রক্তগ্রহীতার কোনো প্রোফাইল তৈরি হবে না।',
+            title: 'Reject the request?',
+            body: 'On rejection, no profile will be created.',
             precom: () =>
               updateReceiverProfile({
                 id,
                 status: 'REJECTED'
               }),
-            successText: 'রিকুয়েস্টটি বাতিল করা হয়েছে।'
+            successText: 'Successfully rejected the requested.'
           })
       }
     ]

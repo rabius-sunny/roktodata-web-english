@@ -35,7 +35,7 @@ export default function CancelDialog({ open, setOpen, appId }: TPorps) {
     const res = await declineAppointment(
       appId,
       'CANCELED',
-      checked ? 'আমি ইতোমধ্যে অন্য ডোনেশন রিকুয়েস্ট কনফার্ম করেছি।' : msg
+      checked ? 'I already confirmed another one.' : msg
     )
     if (res.ok) {
       successAlert({ body: 'Request has been canceled.' })

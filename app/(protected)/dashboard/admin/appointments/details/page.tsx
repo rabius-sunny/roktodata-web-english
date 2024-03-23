@@ -58,9 +58,9 @@ export default function AppointmentsDetails() {
 
   return (
     <div>
-      <DetailsApplication data={data.appointment} access='ADMIN' />
+      <DetailsApplication data={data.appointments} access='ADMIN' />
       <div className='mt-12'>
-        {data.appointment.status === 'UNVERIFIED' && (
+        {data.appointments.status === 'UNVERIFIED' && (
           <div className='flex flex-col md:flex-row-reverse gap-8'>
             <Button
               onClick={() =>
@@ -95,7 +95,7 @@ export default function AppointmentsDetails() {
           </div>
         )}
 
-        {data.appointment.status === 'REJECTED' && (
+        {data.appointments.status === 'REJECTED' && (
           <Button
             onClick={() =>
               confirmAlertAsync({

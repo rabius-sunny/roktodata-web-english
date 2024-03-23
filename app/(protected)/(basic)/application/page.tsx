@@ -157,7 +157,7 @@ export default function Application() {
       setLoading(false)
       errorAlert({
         title: 'Error occurred',
-        body: 'ছবিগুলো আপলোড হয়নি। আবার চেষ্টা করুন।'
+        body: 'Failed to upload the images. Please try again.'
       })
     }
   }
@@ -165,8 +165,8 @@ export default function Application() {
   const onSubmit = async (inputData: TAppointmentData) => {
     if (imageInputs.length === 1 && !imageInputs[0].file) {
       return errorAlert({
-        title: 'ছবি আপলোড করা হয়নি',
-        body: 'সংশ্লিষ্ট ডকুমেন্টস এর ছবি ছাড়া আবেদন সম্পূর্ণ হবে না।',
+        title: 'No image uploaded yet.',
+        body: 'To complete the application, related docs image(s) is required.',
         timer: 5000
       })
     }
@@ -184,7 +184,6 @@ export default function Application() {
       if (!images) return
       const fields = {
         ...inputData,
-        // images: ['82187904-bef2-4b67-bff5-33a3c3d08b18-rexrxh.png'],
         images,
         donor,
         receiver,
@@ -193,7 +192,7 @@ export default function Application() {
       const res = await createAppointment(fields)
       if (res.ok) {
         successAlert({
-          body: 'আবেদনটি অ্যাডমিন চেকিংয়ে পাঠানো হয়েছে। অ্যাপ্রুভ করা হলে জানানো হবে।'
+          body: 'Application is waiting for approval, you will be notified.'
         })
         replace('/')
       }
@@ -208,7 +207,7 @@ export default function Application() {
       setLoading(false)
       errorAlert({
         title: 'Error occurred',
-        body: 'আবার চেষ্টা করুন।'
+        body: 'Try again.'
       })
     }
   }
@@ -216,7 +215,7 @@ export default function Application() {
   return (
     <div>
       <Container size='sm' className='pb-40'>
-        <h1 className='text-center mt-8'>আবেদন ফর্ম</h1>
+        <h1 className='text-center mt-8'>Application form</h1>
         <hr />
         <form
           className='flex flex-col gap-2 my-10'
@@ -225,40 +224,40 @@ export default function Application() {
           {formStatus && (
             <Alert variant='info' className='mb-8'>
               <AlertCircle className='size-6' />
-              <AlertTitle>গুরুত্বপূর্ণ তথ্য</AlertTitle>
+              <AlertTitle>Important notice</AlertTitle>
               <AlertDescription>
                 {status.profileStatus === 'PENDING' &&
-                  'আপনার পূর্বের ফর্ম তথ্যগুলো রিভিউ করা হচ্ছে। অ্যাপ্রুভ করা হলে জানিয়ে দেয়া হবে। তখন নিম্নোক্ত ফর্মটি পূরণ করে আবেদন সম্পূর্ণ করতে পারবেন।'}
+                  'We are reviewing your previoius form info. You will be notified when we approve, then you can fill this form.'}
                 {status.requestStatus === 'REQUESTED' &&
-                  'আপনি ইতোমধ্যে একটি আবেদন করেছেন। সেটি রিভিউ করা হলে আবার আবেদন করতে পারবেন।'}
+                  'You have already submitted a application. After reviewing that, you can submit another one.'}
               </AlertDescription>
             </Alert>
           )}
           <GTextarea
             compact
             register={register}
-            label='হাসপাতালের তথ্য'
+            label='Hospital Info.'
             message={errors.hospitalInfo?.message}
             name='hospitalInfo'
           />
           <GTextarea
             compact
             register={register}
-            label='বর্তমান Address'
+            label='Current Address'
             message={errors.address?.message}
             name='address'
           />
           <GInput
             type='datetime-local'
             register={register}
-            label='তারিখ ও সময়'
+            label='Date & Time'
             name='scheduledAt'
             message={errors.scheduledAt?.message}
           />
           <GTextarea
             compact
             register={register}
-            label='অন্যান্য তথ্য'
+            label='Others Info.'
             message={errors.additionalInfo?.message}
             name='additionalInfo'
             optional
@@ -272,7 +271,7 @@ export default function Application() {
               loading={loading}
               disabled={loading || formStatus}
             >
-              আবেদন সম্পূর্ণ করুন <SendHorizonal className='size-4' />
+              Complete application <SendHorizonal className='size-4' />
             </Button>
           </div>
         </form>
@@ -287,10 +286,10 @@ export default function Application() {
             onClick={() =>
               imageInputs[0].file
                 ? confirmAlert({
-                    title: 'ডিলেট নোটিস',
-                    body: `আপনি ইতোমধ্যে ${imageInputs.length} টি ছবি সিলেক্ট করেছেন। নতুন করে সিলেক্ট করলে পূর্বের সব সিলেকশন বাতিল হয়ে যাবে।`,
-                    confirm: 'এগিয়ে যান',
-                    cancel: 'বাতিল',
+                    title: 'Delete Notice',
+                    body: `You've already selected ${imageInputs.length} images. Previous data will be cancelled on new selection.`,
+                    confirm: 'Confirm',
+                    cancel: 'Cancel',
                     precom: () => {
                       setIsOpen(true)
                       setImageInputs([{ id: 0, file: null }])
@@ -300,17 +299,16 @@ export default function Application() {
                 : setIsOpen(true)
             }
           >
-            <ImagePlus /> ডকুমেন্টস এর ছবি আপলোড করুন
+            <ImagePlus /> Upload image(s) of documents.
           </Button>
         </div>
 
         <AlertDialog open={isOpen}>
           <AlertDialogContent className='max-h-[600px] overflow-y-auto'>
-            <AlertDialogHeader builtin>ছবি আপলোড করুন</AlertDialogHeader>
+            <AlertDialogHeader builtin>Upload Images</AlertDialogHeader>
             <AlertDialogDescription>
-              রোগীর প্রেসক্রিপশন, ব্লাড টেস্ট রিপোর্ট ইত্যাদি সংশ্লিষ্ট
-              কাগজপত্রের স্পষ্ট ছবি আপলোড করুন। সর্বোচ্চ ৫টি ও প্রতিটি ছবি
-              সর্বোচ্চ 4mb সাইজ।{' '}
+              Upload the photos of prescription, blood test report and others
+              related documents. Maximum 5 photos and each size 5mb.
             </AlertDialogDescription>
             <form action={handleImageUpload}>
               {imageInputs.map((item, idx) => (
@@ -345,14 +343,18 @@ export default function Application() {
                 onClick={addImageInput}
               >
                 <PlusCircle className='size-5' />
-                আরো ছবি যোগ করুন
+                attach more
               </Button>
 
               <AlertDialogFooter className='gap-3 sm:gap-0 flex-col-reverse mt-4'>
                 <Button
                   disabled={loading}
                   onClick={() => {
-                    if (window.confirm('সিলেক্টেড সকল ছবি মুছে যাবে।')) {
+                    if (
+                      window.confirm(
+                        'All selected photos will be removed. Sure?'
+                      )
+                    ) {
                       setImageInputs([{ id: 0, file: null }])
                       setSelectedImages([])
                       setIsOpen(false)

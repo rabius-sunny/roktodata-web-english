@@ -34,8 +34,8 @@ export default async function ReceiverApplications() {
               status === 'UNVERIFIED' && 'text-white'
             )}
           >
-            আপনার আবেদনটি অ্যাডমিন কর্তৃক ভেরিফাই তালিকায় রয়েছে। ভেরিফিকেশনের পর
-            ডোনারের কাছে পাঠিয়ে দেয়া হবে।
+            Your application is waiting for admin verification. After verifying,
+            it will be send to donor.
           </p>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default async function ReceiverApplications() {
               status === 'PENDING' && 'text-white'
             )}
           >
-            আপনার আবেদনটি ভেরিফাই করা হয়েছে। ডোনারের রেসপন্সের অপেক্ষায় রয়েছে।
+            We have verified your application. It is waiting for donor response.
           </p>
         </div>
       </div>
@@ -83,8 +83,8 @@ export default async function ReceiverApplications() {
               status === 'ACCEPTED' && 'text-white'
             )}
           >
-            আপনার আবেদনটি ডোনার কর্তৃক গৃহীত হয়েছে। যোগাযোগ করুন অথবা সাক্ষাতের
-            অপেক্ষা করুন।
+            Your application is confirmed by donor. Please wait or contact to
+            donor.
           </p>
         </div>
       </div>
@@ -96,6 +96,6 @@ export default async function ReceiverApplications() {
       Error occurred, try again.
     </h1>
   ) : (
-    <h1 className='text-center mt-4 text-red-500'>আপনার কোনো আবেদন নেই।</h1>
+    <h1 className='text-center mt-4 text-red-500'>You have no application.</h1>
   )
 }

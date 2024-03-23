@@ -27,9 +27,7 @@ export const createUser = async (data: any) => {
       }
     })
     if (isDuplicate.length)
-      return error_res(
-        'Email, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
-      )
+      return error_res('Email, Identity or Phone no. already in use.')
 
     await prisma.user.create({
       data: {
@@ -62,9 +60,7 @@ export const createReceiver = async (data: any) => {
       }
     })
     if (isDuplicate.length)
-      return error_res(
-        'Email, আইডি কার্ড নম্বর অথবা ফোন নম্বর ইতোমধ্যে ব্যবহৃত হয়েছে।'
-      )
+      return error_res('Email, Identity or Phone no. already in use.')
 
     const receiver = await prisma.receiver.create({
       data: {
@@ -109,7 +105,7 @@ export const checkStatus = async (formData: TLogindata) => {
         return success_res()
       } else {
         return error_res(
-          'আপনার একাউন্টটি এখনো ভেরিফাই করা হয়নি। হলে জানিয়ে দেয়া হবে।'
+          'Your account is not verified yet. You will be notified shortly.'
         )
       }
     } else {

@@ -213,12 +213,12 @@ export const deleteAppointment = async (id: string) => {
 }
 
 export const createAdmin = async () => {
-  const session = await auth()
-  if (session?.user.role !== 'ADMIN') return error_res('UnAuthenticated')
+  // const session = await auth()
+  // if (session?.user.role !== 'ADMIN') return error_res('UnAuthenticated')
   try {
     await prisma.admin.create({
       data: {
-        email: 'demo@roktodata.com',
+        email: 'admin@roktodata.com',
         password: '147570'
       }
     })
