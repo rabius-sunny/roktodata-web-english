@@ -71,6 +71,12 @@ export const createDonation = async (appId: string, image?: string) => {
         userStatus: 'NORMAL'
       }
     })
+    await prisma.donorProfile.update({
+      where: { id: appointment.donorId },
+      data: {
+        status: 'ACTIVE'
+      }
+    })
     await prisma.appointment.delete({ where: { id: appId } })
 
     revalidatePath('/dashboard/admin', 'layout')

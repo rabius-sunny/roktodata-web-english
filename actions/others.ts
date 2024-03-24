@@ -74,13 +74,10 @@ export const checkAppointmentAvailablity = async (
     const hasReceiverAppointment = await prisma.appointment.findUnique({
       where: { receiverId: receiver }
     })
-    if (!donorRes || !userRes)
-      return error_res(
-        'কোনো ইউজার অথবা ডোনার ডাটা পাওয়া যায়নি। আবার চেষ্টা করুন।'
-      )
+    if (!donorRes || !userRes) return error_res('No donor or receiver found.')
     if (hasReceiverAppointment) {
       return error_res(
-        'আপনি ইতোমধ্যে একটি আবেদন করেছেন। সেটির ফলাফল জানিয়ে দেয়া হলে আবার আবেদন করতে পারবেন।'
+        `You've already submitted an application. You can make a new after completing the previous.`
       )
     }
     return success_res()
@@ -209,7 +206,7 @@ export const getAppointmentForUser = async (id: string) => {
 export const getUserStatus = async (id: string) => {
   try {
     const user = await prisma.receiver.findUnique({ where: { id } })
-    if (!user) return error_res('কোনো ইউজার পাওয়া যায়নি, আবার চেষ্টা করুন।')
+    if (!user) return error_res('No user found.')
     return success_res({
       profileStatus: user?.status,
       requestStatus: user?.userStatus
