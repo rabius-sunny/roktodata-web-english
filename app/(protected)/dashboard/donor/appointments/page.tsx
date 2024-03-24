@@ -14,7 +14,7 @@ export default async function AppointmentsForDonor() {
     <div>
       {hasPending ? (
         <AppointmentsTable
-          title='আগত আবেদন'
+          title='Pending Appointments'
           data={data.filter((item: TAppointment) => item.status === 'PENDING')}
         />
       ) : null}

@@ -69,10 +69,10 @@ export default function AppointmentsDetailsForDonor() {
         <Button
           onClick={() =>
             confirmAlertAsync({
-              body: 'আবেদনটি গ্রহণ করা হবে?',
+              body: 'Accept the application?',
               precom: handleAccept,
               successText:
-                'আবেদনটি গ্রহণ করা হয়েছে। অনুগ্রহ করে সঠিক সময়ে সঠিক স্থানে গিয়ে আপনার মূল্যবান ডোনেশনটি সম্পন্ন করুন। জাযাকাল্লাহু খাইরান।'
+                'Application has been accepted. Please make your donation at the right place in the right time. Thank you.'
             })
           }
           shadow
@@ -80,7 +80,7 @@ export default function AppointmentsDetailsForDonor() {
           size='lg'
           variant='secondary'
         >
-          গ্রহণ করুন
+          Accept
         </Button>
         <Button
           onClick={() => setOpenCancelDialog(true)}
@@ -88,7 +88,7 @@ export default function AppointmentsDetailsForDonor() {
           className='w-full'
           size='lg'
         >
-          ক্যান্সেল করুন
+          Reject
         </Button>
       </div>
 
@@ -103,7 +103,7 @@ export default function AppointmentsDetailsForDonor() {
           onClick={() => setOpenCompleteDialog(true)}
           className='bg-success w-full'
         >
-          ডোনেশনটি সম্পূর্ণ হয়েছে
+          Donation completed
         </Button>
       </div>
     </div>

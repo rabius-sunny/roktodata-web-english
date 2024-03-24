@@ -33,7 +33,7 @@ export const acceptAppointment = async (id: string) => {
       }
     })
     await prisma.donorProfile.update({
-      where: { id: session.user.id },
+      where: { userId: session.user.id },
       data: {
         status: 'INACTIVE'
       }
@@ -43,7 +43,7 @@ export const acceptAppointment = async (id: string) => {
     revalidatePath('/dashboard/donor/appointments', 'page')
     revalidatePath('/dashboard/receiver/appointments', 'page')
     return success_res()
-  } catch (error) {
+  } catch {
     return error_res()
   }
 }

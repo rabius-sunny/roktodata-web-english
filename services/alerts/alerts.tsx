@@ -90,9 +90,10 @@ export async function confirmAlertAsync({
   if (result.isConfirmed) {
     try {
       const res = await precom()
-      if (res.ok) toast.success(successText || 'successfully done the task.')
+      if (res.ok)
+        return toast.success(successText || 'successfully done the task.')
       else if (res.error)
-        errorAlert({ title: 'Error occurred', body: res.error })
+        return errorAlert({ title: 'Error occurred', body: res.error })
     } catch (error) {
       errorAlert({ title: 'Error occurred।', body: error as string })
     }
