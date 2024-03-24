@@ -4,7 +4,6 @@ import DonationCards from '@/components/dashboard/DonationCards'
 
 export default async function Donations() {
   const { data, error } = await getDonations('DONOR')
-  console.log('data', data)
   return error ? (
     <div className='my-10 text-center'>
       <h1 className='text-red-500'>Error occurred, please try again.</h1>
@@ -13,7 +12,7 @@ export default async function Donations() {
     <div>
       <h1 className='text-dark'>Donations</h1>
       <p className='text-litetext font-light'>My donations history</p>
-      <DonationCards forDonor donations={data} />
+      <DonationCards donations={data} />
     </div>
   ) : (
     <div className='my-10 text-center'>

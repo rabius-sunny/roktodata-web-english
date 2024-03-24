@@ -116,4 +116,4 @@ export const siteInfo = {
 export const api =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:4050'
-    : 'https://roktodata.com'
+    : 'https://en.roktodata.com'

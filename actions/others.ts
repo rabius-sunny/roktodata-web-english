@@ -304,3 +304,38 @@ export const getDonations = async (type: TUserType) => {
     return error_res()
   }
 }
+
+export const getSingleDonation = async (id: string) => {
+  try {
+    const donation = await prisma.donation.findUnique({
+      where: {
+        id
+      },
+      include: {
+        receiver: {
+          select: {
+            bloodType: true,
+            district: true,
+            subDistrict: true,
+            state: true
+          }
+        },
+        donor: {
+          include: {
+            user: {
+              select: {
+                bloodType: true,
+                district: true,
+                subDistrict: true,
+                state: true
+              }
+            }
+          }
+        }
+      }
+    })
+    return success_res(donation)
+  } catch {
+    return error_res()
+  }
+}

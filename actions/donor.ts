@@ -87,3 +87,31 @@ export const createDonation = async (appId: string, image?: string) => {
     return error_res()
   }
 }
+
+export const getDonorProfile = async (id: string) => {
+  try {
+    const donor = await prisma.donorProfile.findUnique({
+      where: { id },
+      select: {
+        bloodType: true,
+        status: true,
+        donationHistory: true,
+        user: {
+          select: {
+            address: true,
+            name: true,
+            email: true,
+            religion: true,
+            district: true,
+            subDistrict: true,
+            state: true,
+            createdAt: true
+          }
+        }
+      }
+    })
+    return success_res(donor)
+  } catch {
+    return error_res()
+  }
+}
