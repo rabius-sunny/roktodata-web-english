@@ -20,24 +20,26 @@ export default async function DonationDetails({
             {data.receiver.bloodType}
           </div>
         </div>
-        <h2 className='mb-4'>Donor info.</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8'>
           <div className='col-auto'>
+            <h2>Donor info.</h2>
             <hr className='mb-2' />
             <div className='grid gap-2'>
               <p>
                 District :
-                <span className='text-dark pl-2'>{data.donor.user.jilla}</span>
+                <span className='text-dark pl-2'>
+                  {data.donor.user.district}
+                </span>
               </p>
               <p>
                 Sub district :
                 <span className='text-dark pl-2'>
-                  {data.donor.user.subJilla}
+                  {data.donor.user.subDistrict}
                 </span>
               </p>
               <p>
                 State :
-                <span className='text-dark pl-2'>{data.donor.user.thana}</span>
+                <span className='text-dark pl-2'>{data.donor.user.state}</span>
               </p>
             </div>
           </div>
@@ -47,15 +49,17 @@ export default async function DonationDetails({
             <div className='grid gap-2'>
               <p>
                 District :
-                <span className='text-dark pl-2'>{data.receiver.jilla}</span>
+                <span className='text-dark pl-2'>{data.receiver.district}</span>
               </p>
               <p>
                 Sub district :
-                <span className='text-dark pl-2'>{data.receiver.subJilla}</span>
+                <span className='text-dark pl-2'>
+                  {data.receiver.subDistrict}
+                </span>
               </p>
               <p>
                 State :
-                <span className='text-dark pl-2'>{data.receiver.thana}</span>
+                <span className='text-dark pl-2'>{data.receiver.state}</span>
               </p>
             </div>
           </div>
@@ -73,20 +77,21 @@ export default async function DonationDetails({
             </span>
           </h3>
         </div>
-        <div className='mt-6'>
-          <h3 className='font-medium'>Related files</h3>
-          <div className='mt-6 grid grid-cols-1 md:grid-cols-2 gap-3'>
-            <div className='col-auto'>
-              <Image
-                width={400}
-                height={300}
-                src={`https://utfs.io/f/${data.image}`}
-                alt='file image'
-                className='w-full'
-              />
+        {data.image && (
+          <div className='mt-6'>
+            <div className='mt-6 grid grid-cols-1 md:grid-cols-2 gap-3'>
+              <div className='col-auto'>
+                <Image
+                  width={400}
+                  height={300}
+                  src={`https://utfs.io/f/${data.image}`}
+                  alt='file image'
+                  className='w-full'
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </Container>
     </div>
   )

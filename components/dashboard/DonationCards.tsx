@@ -33,13 +33,15 @@ export default function DonationCards({
                 </div>
               </div>
               <div className='mt-4 px-2'>
-                <p className='uppercase font-medium text-xs'>Donation #1</p>
+                <p className='uppercase font-medium text-xs'>
+                  Donation #{idx + 1}
+                </p>
                 <p className='font-light mt-2'>{donation.address}</p>
                 <Link
                   href={`/donation?id=${donation.id}`}
                   className={cn('mt-4', buttonVariants())}
                 >
-                  বিস্তারিত দেখুন <ArrowRight className='size-5' />
+                  See details <ArrowRight className='size-5' />
                 </Link>
               </div>
             </div>

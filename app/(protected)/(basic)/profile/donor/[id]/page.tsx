@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
+import DonationCards from '@/components/dashboard/DonationCards'
 import Container from '@/components/shared/Container'
 import Navigate from '@/components/shared/ui/Navigate'
 
@@ -16,14 +17,14 @@ export default async function DonorProfile({
 }) {
   const { data } = await getDonorProfile(params.id)
   const session = await auth()
-
+  console.log('data', data)
   return (
     <div>
       <div className='donor-card pb-32 pt-2'>
         <Navigate />
         <div className='max-w-32 md:max-w-40 mx-auto relative'>
           <div className='bg-white shadow-lg shadow-black/50 size-32 md:size-40 rounded-full flex-center text-primary font-bold text-5xl'>
-            {data.receiver.bloodType}
+            {data.bloodType}
           </div>
           <div className='absolute bottom-0 right-4 size-5 md:size-7 bg-green-500 rounded-full' />
         </div>
@@ -81,14 +82,18 @@ export default async function DonorProfile({
         </div>
       </div>
 
-      <div className='mt-12'>
+      <div className='my-12'>
         <Container size='md'>
           <h1>Previous Donations</h1> <hr className='mt-2 border-dark/20' />
-          <div className='my-8'>
+          {data.donationHistory.length ? (
+            <div>
+              <DonationCards donations={data.donationHistory} />
+            </div>
+          ) : (
             <div className='text-red-600 font-medium'>
               This donor has no donations previously.
             </div>
-          </div>
+          )}
         </Container>
       </div>
     </div>
